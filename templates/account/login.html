@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+
+{% load static %}
+<style>
+  .search{
+     display: none;
+  }
+ 
+ </style>
+
+{% if messages %}
+{% for mess in messages %}
+<h3>{{mess}}</h3>
+{% endfor %}
+{% endif %}
+ 
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                {% if error %}
+                {{form.errors}}
+                {{ form2.errors}}
+                {% endif %}
+              <div class="brand-logo">
+                <!--<img src="../../images/logo-dark.svg" alt="logo">-->
+              </div>
+              <h4>Sign Form</h4>
+              <h6 class="font-weight-light">Login below.</h6>
+              <form action="{% url 'account:login' %}" method="POST" class="pt-3">
+                {% csrf_token %}
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" name="username" id="exampleInputUsername1" placeholder="Username">
+                
+                </div>
+
+
+                  <div class="form-group">
+                    <input type="password" class="form-control form-control-lg" name="password" id="exampleInputEmail1" placeholder="Password">
+                  </div>
+              
+         
+    
+              
+                <!--<div class="mb-4">
+                  <div class="form-check">
+                    <label class="form-check-label text-muted">
+                      <input type="checkbox" class="form-check-input">
+                      I agree to all Terms & Conditions
+                    </label>
+                  </div>
+                </div>-->
+                <div class="mt-3">
+                    <button class="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn">Login</button>
+                  <!--<a class="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN UP</a>-->
+                </div>
+                <div class="text-center mt-4 font-weight-light">
+                  Dont have an account yet? <a href="{% url 'account:register_page' %}" class="text-primary">Sign Up</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+ 
+
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+<style>
+    .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  
+}
+</style>
+
+
+
+ 
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+       
+          <div class="col-lg-10 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+              
+              <h4>Addmission Application Form</h4>
+              <h6 class="font-weight-light">Please fill up the form below.</h6>
+              
+
+                <form action="{% url 'core_app:student_detail' %}" method="post" novalidate>
+                  {% csrf_token %}
+                  
+                  <div class="row w-100 mx-0">
+                  {% for hidden_field in form.hidden_fields %}
+                    {{ hidden_field }}
+                  {% endfor %}
+
+                  {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                      {% for error in form.non_field_errors %}
+                        {{ error }}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {% for field in form.visible_fields %}
+                    <div class="form-group mb-4  col-md-6">
+                      {{ field.label_tag }}
+
+                      {% if form.is_bound %}
+                        {% if field.errors %}
+                          {% render_field field class="form-control is-invalid" %}
+                          {% for error in field.errors %}
+                            <div class="invalid-feedback">
+                              {{ error }}
+                            </div>
+                          {% endfor %}
+                        {% else %}
+                          {% render_field field class="form-control is-valid" %}
+                        {% endif %}
+                      {% else %}
+                        {% render_field field class="form-control" %}
+                      {% endif %}
+
+                      {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                  </div>
+
+                  <button type="submit" class="btn btn-danger">Submit</button>
+                  
+                </form>
+                </div>
+                              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+  
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+       
+          <div class="col-lg-10 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+           
+              <h4>Addmission Application Form</h4>
+              <h6 class="font-weight-light">Please fill up the form below.</h6>
+              <form action="{% url 'core_app:addmission' %}" method="POST" class="pt-3">
+                {% csrf_token %}
+
+                <div class="row w-100 mx-0">
+
+      
+
+                <div class="mb-4 form-outline col-md-6">
+                  <label class="form-label">Student's First Name</label>
+                    {% render_field form.firstName|attr:'required:true' class="form-control" %}
+                </div>
+
+                <div class="mb-4 form-outline col-md-6">
+                    <label class="form-label">Middle Name</label>
+                    {% render_field form.middleName|attr:'required:false' class="form-control" %}
+                </div>
+                <div class="mb-4 form-outline col-md-6">
+                  <label class="form-label">Last Name</label>
+                  {% render_field form.lastName|attr:'required:true' class="form-control" %}
+                </div>
+                <div class="mb-4 form-outline col-md-6">
+                  <div class="form-label">University</div>
+                  <input type="text" class="form-control form-control-lg" name="University" id="exampleInputEmail1" placeholder="{{uni}}" >
+                   </div>
+                <div class="mb-4 form-outline col-md-6">
+                  <label class="form-label">Course</label>
+                  <input type="text" class="form-control form-control-lg" name="course" id="exampleInputEmail1" placeholder="{{course_info.courseName}}" >
+                  
+                </div>
+                
+                <div class="mb-4 form-outline col-md-6">
+                  <label class="form-label">Course Type</label>
+                  <input type="text" class="form-control form-control-lg" name="courseType" id="exampleInputEmail1" placeholder="{{course_info.courseType}}" >
+                  
+                </div>
+                <div class="mb-4 form-outline col-md-6">
+                  <label class="form-label">Course Intake</label>
+                  <input type="text" class="form-control form-control-lg" name="courseIntake" id="exampleInputEmail1" placeholder="{{course_info.courseIntake}}" >
+                  
+                </div>
+                <div class="mb-4 form-outline col-md-6">
+                  <div class="form-label">Passport</div>
+                    {% render_field form.passport|attr:'required:true' class="form-control" %}
+                    </div>
+                 <div class="mb-4 form-outline col-md-4">
+                <label class="form-label">Phone Number</label>
+                {% render_field form.phone|attr:'required:true' class="form-control" %}
+                </div>
+                <div class="mb-4 form-outline col-md-4">
+                  <label class="form-label">DOB</label>
+                  <input type="date" class="form-control form-control-lg" name="country" id="exampleInputEmail1" placeholder="Date of birth">
+               
+                 </div>
+                <div class="mb-4 form-outline col-md-4">
+                <label class="form-label">Email</label>
+                 {% render_field form.email|attr:'required:true' class="form-control" %}
+                </div>
+
+               
+                   <div class="mb-4 form-outline col-md-4">
+                   <label class="form-label">Country</label>
+                   <input type="text" class="form-control form-control-lg" name="country" id="exampleInputEmail1" placeholder="{{uni.country.name}}">
+                
+                  </div>
+                </div>
+                 
+ 
+                  <button type="submit" class="btn btn-danger">Submit</button>
+               
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+  
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
+
+
+
+

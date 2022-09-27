@@ -1,0 +1,104 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+<style>
+ .search{
+    display: none;
+ }
+ .px-0 {
+   
+    margin-top: 30px;
+}
+</style>
+
+ 
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+       
+          <div class="col-lg-10 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+           
+              <h4>Course Selection Form</h4>
+              <h6 class="font-weight-light">University and course selection</h6>
+              <form action="{% url 'core_app:course_selected' %}" method="POST" class="pt-3">
+                {% csrf_token %}
+
+                <div class="row w-100 mx-0">
+
+                   
+                   
+      
+                <div class="mb-4 form-outline col-md-6">
+                  <div class="form-label">University</div>
+                  <input type="text" class="form-control form-control-lg" name="university" id="exampleInputEmail1" value="{{uni}}" placeholder="{{uni}}"  readonly>
+                   </div>
+                <div class="mb-4 form-outline col-md-6">
+                  <label class="form-label">Course</label>
+                  <input type="text" class="form-control form-control-lg" name="course_name" id="exampleInputEmail1"  value="{{course_info.courseName}}" placeholder="{{course_info.courseName}}"  readonly>
+                  
+                </div>
+                <div class="mb-4 form-outline col-md-6">
+                    <label class="form-label">Duration</label>
+                    <input type="text" class="form-control form-control-lg" name="duration" id="exampleInputEmail1" value="{{course_info.duration}}" placeholder="{{course_info.duration}}"  readonly>
+                    
+                  </div>
+                  <div class="mb-4 form-outline col-md-6">
+                    <label class="form-label">Fees</label>
+                    <input type="text" class="form-control form-control-lg" name="fees" id="exampleInputEmail1" value="{{course_info.fees}}" placeholder="{{course_info.fees}}"  readonly>
+                    
+                  </div>
+                
+                <div class="mb-4 form-outline col-md-6">
+                  <label class="form-label">Course Type</label>
+                  <input type="text" class="form-control form-control-lg" name="course_type" id="exampleInputEmail1" value="{{course_info.courseType}}" placeholder="{{course_info.courseType}}"  readonly>
+                  
+                </div>
+                <div class="mb-4 form-outline col-md-6">
+                  <label class="form-label">Course Intake</label>
+                  <input type="text" class="form-control form-control-lg" name="course_intake" id="exampleInputEmail1" value="{{course_info.courseIntake}}" placeholder="{{course_info.courseIntake}}"  readonly>
+                  
+                </div>
+                   <div class="mb-4 form-outline col-md-4">
+                   <label class="form-label">Country</label>
+                   <input type="text" class="form-control form-control-lg" name="country" id="exampleInputEmail1" value="{{uni.country.name}}" placeholder="{{uni.country.name}}" readonly>
+                
+                  </div>
+                </div>
+                 
+
+                  <button type="submit" class="btn btn-danger">Confirm</button>
+               
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
+
+
+
+
