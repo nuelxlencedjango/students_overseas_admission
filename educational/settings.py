@@ -10,14 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+
+
+
+
+
 from pathlib import Path
 
 import os
 
+import dj_database_url
 
 
-
-import django_heroku
+#import django_heroku
 
 #import cloudinary_storage
 import cloudinary
@@ -33,10 +38,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY=os.environ.get('SECRET_KEY')
-
+#SECRET_KEY="django-insecure-^l)m&0ryr*fgyyy#zoxmsx^#03odx)55-sxpy&^%#_5ldqs9@s"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
-
+DEBUG =True
 ALLOWED_HOSTS = ['127.0.0.1','web-production-cbed.up.railway.app/']
 
 
@@ -186,7 +191,7 @@ EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 
 
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 #if os.getcwd() == '/app':
  #   SECURE_PROXY_SSL_HEADER =('HTTP_X_FORWARDED_PROTO', 'https')

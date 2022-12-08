@@ -23,6 +23,7 @@ from .forms import *
 
 
 
+
 def homePage(request):
     return render(request, 'base/base.html')
 
