@@ -194,7 +194,7 @@ CSRF_TRUSTED_ORIGINS=['https://*.127.0.0.1','https://web-production-cbed.up.rail
 
 #django_heroku.settings(locals())
 
-#if os.getcwd() == '/app':
- #   SECURE_PROXY_SSL_HEADER =('HTTP_X_FORWARDED_PROTO', 'https')
- #   SECURE_SSL_REDIRECT =True
- #   DEBUG = False
+if os.getcwd() == '/app':
+    SECURE_PROXY_SSL_HEADER =('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT =True
+    DEBUG = False
