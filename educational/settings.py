@@ -41,7 +41,7 @@ SECRET_KEY=os.environ.get('SECRET_KEY')
 #SECRET_KEY="django-insecure-^l)m&0ryr*fgyyy#zoxmsx^#03odx)55-sxpy&^%#_5ldqs9@s"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
-DEBUG =True
+
 ALLOWED_HOSTS = ['127.0.0.1','web-production-cbed.up.railway.app']
 
 
