@@ -1,0 +1,318 @@
+{% extends 'base2/basePage.html' %}
+{% block content %}
+{% load static %}
+{% load mathfilters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+  
+<link rel="stylesheet" href="{% static 'styling/custom.css' %}">
+
+<style>
+ 
+</style>
+
+
+
+
+
+
+
+<div class="search">
+  <div class="row">
+  <div class="container">
+    <div class="col-md-12 ">
+      <div class="card">
+
+      <form action="" method="POST" class="form-control">
+        {% csrf_token %}
+      
+        <div class="input-group">
+          <input type="text" aria-label="course" name="courseName" class="form-control" placeholder="type your course">
+          <input type="text" aria-label="country" name="country" class="form-control" placeholder="type the country you want">
+          <button class="btn btn-dark">search</button>
+         </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+
+ 
+  
+  
+
+<div class="row">
+  <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+    <div class="card">
+      <label for="" class="opt">nationality</label>
+      <div class="card-by">
+        <select name="nationality" id="">
+          
+          <option selected disabled>select.....</option>
+          
+          <option  value="{{ form.nationality}}"></option>
+         
+         
+         </select>
+      </div>
+      <label class="opt" for="">Do you have a valid Study Permit / Visa?</label>
+      <div class="card-by">
+         <select name="" id="">
+          <option selected disabled value=""> Select .....</option>
+          <option value="I  dont have" class="opt">I dont have</option>
+          <option value="USA F1 Visa" class="opt">USA F1 Visa</option>
+          <option value="Canadian Study Permit or Visitor Visa" class="opt">Canadian Study Permit or Visitor Visa</option>
+          <option  value="Uk Student Visa or Short Term Visa ">Uk Student Visa or Short Term Visa </option>
+          <option value="Australian Student Visa">Australian Student Visa</option>
+          <option value="Irissh step 2">Irissh step 2</option>
+         </select>
+      </div>
+
+      <div class="card-by">
+      <label class="opt" for="">Education Country</label>
+         <select name="education" id="">
+          <option value="{{form.nationality}}"></option>
+         </select>
+      </div>
+
+      <div class="card-by">
+         <label  class="opt" for="">Education Level</label>
+         <select name="educational_Level " id="">
+          <option selected disabled value=""> select grade</option>
+          <option value="Grade 1">Grade 1</option>
+          <option value="Grade 2">Grade 2</option>
+          <option value="Grade 3">Grade 3</option>
+          <option value="Grade 4">Grade 4</option>
+          <option value="Grade 5">Grade 5</option>
+          <option value="Grade 6">Grade 6</option>
+          <option value="Grade 7">Grade 7</option>
+          <option value="Grade 8">Grade 8</option>
+          <option value="Grade 9">Grade 9</option>
+          <option value="Grade 10">Grade 10</option>
+          <option value="Grade 11">Grade 11</option>
+          <option value="Grade 12">Grade 12</2option>
+
+          <option value="Secondary school"> Secondary school certificate</option>
+          <option value="diploma"> Undergrade diploma</option>
+          <option value="Advanced diploma"> Advanced diploma</option>
+          <option value="3 year bachelor"> 3 year bachelor degree </option>
+          <option value="4 year bachelor">4 year bachelor degree</option>
+         </select>
+      </div>
+
+      <div class="card-by">
+         <label class="opt" for="">English Exam Type</label>
+         <select name="" id="">
+          <option selected disabled value="">English Text</option>
+          <option value="No English text">No English text</option>
+          <option value="I will provide later">I will provide later</option>
+          <option value="TOFEL">TOFEL</option>
+          <option value="IELTS">IELTS</option>
+          <option value="Doulingo English text">Doulingo English text</option>
+          <option value="PTE">PTE</option>
+         </select>
+      </div>
+      <!--<div class="card-body border-bottom">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+         
+        </div>
+      </div>-->
+     
+  </div>
+</div>
+<div class="col-md-6 col-xl-4 grid-margin stretch-card">
+ <div class="card" id="school-courses" >
+  <ul>
+    <li onclick="programmFunction()">programs</li>
+    <li onclick="toggleFunction()">schools</li>
+    <li>
+
+      <div class="cd-by">
+       
+        <select name="" id="">
+         <option selected disabled value="">English Text</option>
+         <option value="No English text">No English text</option>
+         <option value="I will provide later">I will provide later</option>
+         <option value="TOFEL">TOFEL</option>
+         <option value="IELTS">IELTS</option>
+         <option value="Doulingo English text">Doulingo English text</option>
+         <option value="PTE">PTE</option>
+        </select>
+     </div>
+    </li>
+  </ul>
+  
+  <div class="container course-program" id="course-program">
+    <h3 id="found">found {{number_courses}} courses </h3>
+    <div class="row school">
+      
+      {% for item in course_item %}
+      <h3 style="color: red;">{{ item.university_courses.duration }}</h3>
+      <h5>Year Post-Secondary Certificate</h5>
+      <h6>Level - Design, Surveying and Planning for Construction</h6>
+      <div class="col-md-6">
+      <div class="card">
+        <div class="form-group row">
+        
+          <h3><a href="{% url 'core_app:courseDetail' item.pk %}">{{ item.courseName}}</a></h3>
+        </div>
+      </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="card">
+          <div class="form-group row">
+            <a href="{% url 'core_app:universityDetail' item.pk %}"><h3>{{ item.university }}</h3></a>
+           </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+       <div class="card">
+        <div class="form-group row">
+          <h3>application fees</h3>
+         <p>00000</p>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-4">
+      <div class="card">
+        <div class="form-group row">
+          <h5>tution fees</h5>
+         <h3>{{ item.fees }}</h3>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-3">
+      <div class="card">
+        <div class="form-group row">
+          
+          <h3><a class="btn btn-dark"  href="">details</a></h3>
+         </div>
+      </div>
+      </div>
+      <hr>
+          
+  {% endfor %}
+
+    </div>
+
+<div class="center">
+  {% if course_item.has_other_pages %}
+  <ul class="pagination">
+    {% if course_item.has_previous %}
+      <a href="?page={{ course_item.previous_page_number }}">&laquo;</a>
+    {% else %}
+      <a class="disabled"><span>&laquo;</span></a>
+    {% endif %}
+
+    {% for i in course_item.paginator.page_range %}
+      {% if course_item.number == i %}
+        <a class="active"><span>{{ i }} <span class="sr-only"></span></span></a>
+      {% else %}
+        <a href="?page={{ i }}">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if course_item.has_next %}
+      <a href="?page={{ course_item.next_page_number }}">&raquo;</a>
+    {% else %}
+      <a class="disabled"><span>&raquo;</span></a>
+    {% endif %}
+  </ul>
+{% endif %}  
+  </div>
+  </div>
+
+
+
+
+
+    <div class="university_names" id="university_names">
+      
+        <div class="row">
+      {% for ui in uni %}
+      <div class="col-md-6">
+       <a href="{% url 'core_app:selected_university' ui.pk %}">
+        <div class="card">
+          <div class="card-content">
+            <div class="imgBody">
+             
+              <img src="{{ui.img.url}}" alt="">
+             
+            </div>
+            <div class="card-text">
+              <h3>{{ui.name}}, <br> <span>{{ui.city}},</span></h3>
+              <h4>{{ui.country.name}}</h4>
+            </div>
+          </div>
+        </div>
+       </a>
+        </div>   
+        {% endfor %}  
+        </div>    
+        
+        
+        <div class="center">
+          {% if uni.has_other_pages %}
+          <ul class="pagination">
+            {% if ui.has_previous %}
+              <a href="?page={{ ui.previous_page_number }}">&laquo;</a>
+            {% else %}
+              <a class="disabled"><span>&laquo;</span></a>
+            {% endif %}
+        
+            {% for i in ui.paginator.page_range %}
+              {% if ui.number == i %}
+                <a class="active"><span>{{ i }} <span class="sr-only"></span></span></a>
+              {% else %}
+                <a href="?page={{ i }}">{{ i }}</a>
+              {% endif %}
+            {% endfor %}
+            {% if ui.has_next %}
+              <a href="?page={{ ui.next_page_number }}">&raquo;</a>
+            {% else %}
+              <a class="disabled"><span>&raquo;</span></a>
+            {% endif %}
+          </ul>
+        {% endif %}  
+          </div>
+
+ 
+  </div>
+ </div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+  let courseProgram =document.getElementById('course-program');
+  let university =document.getElementById('university_names');
+
+  function toggleFunction(){
+    university.style.display='block';
+    courseProgram.style.display='none';
+
+  }
+  function programmFunction(){
+    university.style.display='none';
+    courseProgram.style.display='block';
+
+  }
+
+</script>
+
+{% endblock %}

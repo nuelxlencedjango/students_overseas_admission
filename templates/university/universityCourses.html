@@ -1,0 +1,404 @@
+   
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}ImageSlides{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="/static/styling/uniCourse.css">
+
+
+
+
+
+<div class="container coursesInfo">
+  <div class="row">
+    <div class="col-md-3">
+      <!--<input type="text"><button>search</button>-->
+      <div class="card">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+           {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account:p_dashboard' %}">
+                <span class="menu-title">Dashboard</span>
+                
+              </a>
+            </li>
+            {% endif %}
+          
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'core_app:courses' %}">
+                <span class="menu-title">Courses</span>
+               
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'core_app:all_unis' %}">
+                  <span class="menu-title">Universities</span>
+                
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="static/page/icons/mdi.html">
+                  <span class="menu-title">Intake</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="static/page/icons/mdi.html">
+                  <span class="menu-title">Duration</span>
+                 
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="static/page/icons/mdi.html">
+                  <span class="menu-title">Fees</span>
+                 
+                </a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="container">
+        
+        <div class="row">
+        <div class="sch-info">
+          <div class="card">
+            <div class="row">
+              <div class="col-sm-3">
+
+                {% for image in name %}
+                  <div class="schoolImg">
+                    <img src="{{image.img.url}}" alt="">
+                   
+                  </div>
+                {% endfor %}
+
+              </div>
+              <div class="col-sm-9">
+                <div class="content">
+                  {% for school in uni_course %}
+                  <h3>{{ school.courseName}}</h3>
+                  <h5>{{ school.university}}
+                    {% endfor %}
+                    ,
+                    {% for image in name %}
+                    {{ image.country.name}}
+                    {% endfor %}</h5>
+                  </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+    </div>
+    
+      <div class="card overview">
+        <ul>
+          <li onclick="overviewButton()"><button>overview</button></li>
+          <li onclick="requirementButton()"><button>Requirements</button></li>
+          <li onclick="intakeButton()"><button>intake </button></li>
+          <li onclick="scholarshipButton()"><button>Scholarships</button></li>
+          <li onclick="aboutButton()"><button>About</button></li>
+          <li onclick="locateButton()"><button>location</button></li>
+          <li onclick="accommodateButton()"><button>accommodation</button></li>
+         
+         </ul>
+      </div>
+
+      <div class="row ov" id="ov">
+        {% for selected in uni_course %}
+       <ul>
+        <li>
+          <div class="textContent">
+            <h4>course name</h4>
+          <p>{{selected.courseName}} <span> <a href="{% url 'core_app:addmission_process' selected.id %}" class="btn btn-dark">apply</a></span></p>
+         
+          </div>
+        </li>
+        <li>
+          <div class="textContent">
+            <h4>level</h4>
+            <p>{{selected.courseType}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="textContent">
+            <h4>location</h4>
+            <p>{{selected.center}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="textContent">
+            <h4>Tuition Fee</h4>
+            <p>{{selected.fees}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="textContent">
+            <h4>application fees</h4>
+            <p>{{selected.application_fees}}</p>
+          </div>
+        </li> <li>
+          <div class="textContent">
+            <h4>duration</h4>
+            <p>{{selected.duration}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="textContent">
+            <h4>course id</h4>
+            <p>{{selected.courseId}}</p>
+          </div>
+        </li>
+
+       </ul>
+       {% endfor %}
+       
+      </div>
+      <div class="requirement" id="requirement">
+      
+        <div class="container">
+          <h3>admission requirements</h3>
+          {% for result in uni_course %}
+          {% for req in result.university_requiremeents.all %}
+           <div class="content">
+            <div class="text">
+              <ul>
+            
+                <li> <h5>{{ req.requirement }}</h5></li>
+              </ul>
+            </div>
+           </div>
+           {% endfor %}
+           {% endfor %}
+        </div>
+
+      </div>
+
+
+      <div class="card intake" id="intake">
+       
+          <div class="table-responsive pt-3">
+            <table class="table table-striped project-orders-table">
+              <thead>
+                <tr>
+                 
+                  <th>application opens</th>
+                  <th>application deadline</th>
+                  <th>term start</th>
+                  <th>cencus date</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+
+                <h3> <span></span></h3>
+                {% for result in uni_course %}
+                {% for req in result.course_date.all %}
+                <tr>
+                  <!--<td>{{forloop.counter }}</td>-->
+                  <td>{{req.winter_ApplicationDate}} </td>
+                  <td>{{req.winterApplicationDeadline }}</td>
+                  <td>{{req.winterStart_term_date}}</td>
+                  <td>{{req.winterEndStart_date}}</td>
+                
+               
+                </tr>
+                <tr>
+                  <!--<td>{{forloop.counter }}</td>-->
+                  <td>{{req.summer_openApplicationDate}} </td>
+                  <td>{{req.summerDeadlineApplicationDate }}</td>
+                  <td>{{req.summerStart_term_date}}</td>
+                  <td>{{req.summerEndStart_date}}</td>
+                
+               
+                </tr>
+                {% endfor %}
+                {% endfor %}
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card scholarship" id="scholarship">
+          <div class="scholar-content" id="guide">
+            {% for details in uni_course %}
+            {% for req in details.scholarshipInfo.all %}
+            <div class="contents">
+              <h3>guide to scholarship </h3>
+              
+              <div class="textInfo">
+              
+                <ul>
+                  <h4 class="sch-detail">{{details.courseName}} scholarship</h4>
+                  <li>
+                    <p>{{req.info }}</p>
+                  </li>
+                  <li>
+                    <p>{{req.detail}}</p>
+                  </li>
+                
+                 
+    
+                </ul>
+              </div>
+              <div class="scholarshipImg">
+                <img src="{{req.img.url}}" alt="">
+                <!--<p>{{req.detail}}</p>-->
+              </div>
+
+            </div>
+            {% endfor %}
+            {% endfor %}
+          </div>
+        
+        </div>
+        <div class="card about_course" id="about_course">
+          <div class="courseDet">
+            <h3>course overview</h3>
+            {% for detail in uni_course %}
+            <div class="courseText">
+              <p>{{detail.about}}</p>
+              <p>{{detail.overview}}</p>
+              <p>{{detail.description}}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      <div class="card locate" id="locate">
+        <h1>location details </h1>
+        <div class="locationInformation">
+          {% for detail in uni_course %}
+          <h3>Course name <br> <span>{{detail.courseName}}</span></h3>
+         
+          <div class="locateDetail">
+            <h3>location <br><span>{{detail.center}}</span></h3>
+            <h3>school <br><span>{{detail.university}}</span></h3>
+            {% for count in detail.university_courses.all %}
+            <h3>country <br> <span>{{ count.country.name}}</span></h3>
+          </div>
+          {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="card accommodation" id="accommodation">
+        <div class="row">
+          <h1>accommodation details </h1>
+          {% for univ in name %}
+          {% for acco in univ.university_accommodation.all  %}
+          <div class="col-sm-6">
+            <div class="bodyImg">
+              <img src="{{acco.image.url }}" alt="">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            
+            <h3>Fees: {{acco.amount }}</h3>
+          
+            <p>{{acco.detail}}</p>
+            <p>{{acco.description}}</p>
+          </div>
+          {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+      
+    </div>
+    </div>
+  </div>
+
+<script>
+  let ovView =document.getElementById("ov");
+  let requirement =document.getElementById("requirement");
+  let intake =document.getElementById("intake");
+  let schship =document.getElementById("scholarship");
+  let about =document.getElementById("about_course");
+  let locate =document.getElementById("locate");
+  let accommodation =document.getElementById("accommodation");
+
+
+  function overviewButton(){
+    ovView.style.display="block";
+    intake.style.display ="none";
+    requirement.style.display ="none";
+    schship.style.display ="none";
+    about.style.display ="none";
+    locate.style.display ="none";
+    accommodation.style.display ="none";
+
+  }
+ 
+  function intakeButton(){
+    intake.style.display ="block";
+    ovView.style.display="none";
+    requirement.style.display ="none";
+    schship.style.display ="none";
+    about.style.display ="none";
+    locate.style.display ="none";
+    accommodation.style.display ="none";
+
+  }
+  function requirementButton(){
+    requirement.style.display ="block";
+    ovView.style.display="none";
+    intake.style.display ="none";
+    schship.style.display ="none";
+    about.style.display ="none";
+    locate.style.display ="none";
+    accommodation.style.display ="none";
+
+  }
+  function scholarshipButton(){
+    schship.style.display ="block";
+    requirement.style.display ="none";
+    ovView.style.display="none";
+    intake.style.display ="none";
+    
+    about.style.display ="none";
+    locate.style.display ="none";
+    accommodation.style.display ="none";
+
+  }
+  function aboutButton(){
+    about.style.display ="block";
+    schship.style.display ="none";
+    requirement.style.display ="none";
+    ovView.style.display="none";
+    intake.style.display ="none";
+    locate.style.display ="none";
+    accommodation.style.display ="none";
+
+  }
+  function locateButton(){
+    locate.style.display ="block";
+    schship.style.display ="none";
+    requirement.style.display ="none";
+    ovView.style.display="none";
+    intake.style.display ="none";
+    about.style.display ="none";
+    accommodation.style.display ="none";
+
+  }
+  function accommodateButton(){
+    accommodation.style.display ="block";
+    locate.style.display ="none";
+    schship.style.display ="none";
+    requirement.style.display ="none";
+    ovView.style.display="none";
+    intake.style.display ="none";
+    about.style.display ="none";
+    
+
+  }
+</script>
+
+
+
+{% endblock %}

@@ -1,3 +1,155 @@
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+  body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #606a84;
+    text-align: left;
+    background-color: #f8f9fe;
+}
+
+  .search .row{
+    background: gainsboro;
+    height: auto;
+    transition: all .5s;
+  }
+  .search .card{
+    width: 100;
+    padding: 10px;
+  }
+  .search input[type='text']{
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    color: #606a84;
+    /*border: 2px solid #606760;*/
+    border-radius: 20px;
+    text-transform: capitalize;
+    transition: 5s;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid darkgray;
+
+  }
+  .search input::placeholder{
+    color: #606a84;
+    transition: all .5s;
+  }
+  .search .btn{
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-transform: capitalize;
+  }
+  .card  .card-by select option.opt{
+    position: relative;
+    width: 90%;
+    background-color: blue
+  }
+
+
+select:hover{
+  background-color: #606a84;
+
+}
+.col-md-12{
+  padding: 10px;
+}
+.card-body{
+  border: 2px solid gainsboro;
+}
+
+.col-md-6{
+  width: 50%;
+}
+select{
+  width: 500px;
+  height: 40px;
+  font-size: 18px;
+  justify-content: center;
+  text-align: left;
+  transition: 5s;
+  border-radius: 10px;
+  margin: 20px;
+}
+label.opt{
+  font-size: 20px;
+ 
+  font-family: 'Times New Roman', Times, serif;
+  text-transform: capitalize;
+  margin-left: 30px;
+}
+ul{
+  display: inline-flex;
+
+}
+ul li{
+  list-style: none;
+  font-size: 20px;
+  margin: 30px;
+  text-transform: capitalize;
+  font-family: 'Times New Roman', Times, serif;
+  cursor: pointer;
+  color: #000;
+  font-weight: 600;
+
+}
+ul li:hover{
+  text-decoration: underline;
+  color: #606a84;
+
+}
+.col-md-6 .card ul li select{
+  width: 200px;
+  height: 30px;
+  font-size: 18px;
+  justify-content: center;
+  text-align: left;
+  transition: 5s;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+
+
+.col-md-6 {
+  transition: all 5s;
+}
+.col-md-6 .form-group h3{
+  font-size: 20px;
+  margin-top: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  /*transition: all 5s;*/
+  font-weight: 700;
+}
+.col-md-4 .form-group h5, h3{
+  font-size: 15px;
+  text-transform: capitalize;
+}
+.col-md-3 h3 a{
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-radius: 50px;
+}
+.col-md-3 h3 a:hover{
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  background-color: #fff;
+ border: 2px solid #606a84;
+
+color: black !important;
+
+}
+
+
+
+
+.course-program{
+  
+}
+
 /*courses */
   .flex-container {
 display: flex;
@@ -11,6 +163,7 @@ margin-top: 20px;
   margin-left: 5px;
   
 }
+
 .card-image img{
   width: 100%;
   height: 100%;
@@ -53,7 +206,7 @@ margin-top: 20px;
   text-align: center;
   text-transform: capitalize;
   font-weight: 300;
-  color: #0076AD;
+  color: #0076AD; 
   
 }
 .right{
@@ -76,7 +229,7 @@ text-align: center;
   margin-left: 30px;
 }
 
-/*pagination*/
+/*pagination* uniSearch.html*/
 
 .center {
     text-align: center;
@@ -103,3 +256,81 @@ text-align: center;
   }
   
   .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+
+
+
+  .university_names .col-md-6{
+    border: 2px solid b;
+    transition: all 3s;
+   
+    
+  }
+  .university_names .col-md-6 .card {
+    height: 130px;
+    box-sizing: border-box;
+    background: whitesmoke;
+    margin: 2px;
+    border: 2px solid hsl(213, 91%, 36%);
+    font-weight: 700;
+    /*border: 2px solid hwb(240 0% 0%);
+    margin: 10px;*/
+    
+   
+  }
+  .card-content{
+    width: 100%;
+   
+
+  }
+  .imgBody{
+
+    float: left;
+    margin: 5px;
+    width: 45%;
+    height: 110px;
+  }
+  .imgBody img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #fafafa;
+    box-sizing: border-box;
+    object-fit: cover;
+    
+  }
+  .card-text{
+   
+    text-align: center;
+    margin: 5px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: capitalize;
+  }
+  .card-text h4{
+   
+   text-align: center;
+   margin: 5px;
+   font-size: 18px;
+   font-family: 'Times New Roman', Times, serif;
+   text-transform: capitalize;
+   color:   #3e4b5b; /*#f96868; #f96868;*/;
+   color: hsl(213, 91%, 36%);;
+   font-weight: 700;
+ }
+  #university_names {
+    display: none;
+  
+  }
+  #course-program #found{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    color: brown; ;
+    text-align: right;
+  }
+  #found span{
+    color: brown;
+  }

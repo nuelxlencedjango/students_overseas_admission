@@ -19,7 +19,25 @@ urlpatterns =[
 
     path('student_detail/', views.studentInformation, name='student_detail'),
 
-    path('addmission/', views.addmissionApplication, name='addmission'),
+    path('student_info/', views.studentApplicationDetails, name='student_info'),
+    path('passport/<str:name>/',views.passportRegistration, name='passport'),
+    path('addr/',views.studentAddr, name='addr'),
+   path('emerge/',views.familyContact, name='emerge'),
+   path('xp/',views.workX, name='xp'),
+
+
+    path('student/',views.studentTable, name='student'),
+
+     
+      path('student_search/' , SearchResultsView.as_view() ,name="student_search"),
+      
+      path('uni_search/',views.universitySearch, name='uni_search'),
+
+      path('universityDetail/<int:pk>/',views.universityImageGallery, name='universityDetail'),
+      path('courseDetail/<int:pk>/',views.courseDetails, name='courseDetail'),
+      
+      path('selected_university/<int:pk>/',views.schoolChosen, name='selected_university'),
+
  
 ]
 

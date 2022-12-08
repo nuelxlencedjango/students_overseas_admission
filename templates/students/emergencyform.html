@@ -1,0 +1,88 @@
+
+{% extends 'base2/basePage.html' %}
+{% block content %}
+{% load static %}
+{% include 'base/base.html' %}
+{% load widget_tweaks %}
+
+
+<style>
+    .search{
+        display: none;
+    }
+</style>
+  
+   
+    
+        <!-- partial -->
+
+        <div class="alert alert-danger">
+            <strong>
+      
+          {{ form.errors }}
+       
+        </strong>
+          </div>
+      
+            <div class="container">
+          <div class="content-wrapper">
+            
+            <form action="{% url 'core_app:student_info' %}" method="POST" class="form-sample">
+                  
+                {% csrf_token %}
+                
+                <div class="row">
+                    <h4 class="card-title">Emergency Contact</h4>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">First Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="firstName" class="form-control" placeholder="First Name"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Last Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="lastName" class="form-control" placeholder="Last Name"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Relationship *</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="relationship" class="form-control" placeholder="Relationship" />
+                        </div>
+                      </div>
+                    </div>
+                  
+                   
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Phone</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="phone" class="form-control" placeholder="Phone number" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="email" class="form-control" placeholder="Email" />
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+               <div class="modal-footer">
+                    <a href="{% url 'account:p_dashboard' %}" type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</a>
+                    <button type="submit" class="btn btn-danger">Save And Continue</button>
+                </div>
+            </div>
+
+            </div>
+            
+
+{% endblock %}

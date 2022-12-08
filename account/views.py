@@ -6,6 +6,8 @@ from django.contrib import messages
 from .forms import *
 from django.shortcuts import redirect
 from .models import *
+from core_app.forms import *
+from core_app .models import *
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -94,7 +96,12 @@ def logoutPage(request):
 
 @login_required
 def dashboard(request):
-    user = request.user
-    return render(request, 'base2/index.html')
+    form = ApplicationForm()
+    
+   
+    context ={'form':form}
+
+    return render(request, 'base2/index.html', context)
+    
 
 

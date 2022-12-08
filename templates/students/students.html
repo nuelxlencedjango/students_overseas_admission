@@ -1,0 +1,266 @@
+{% extends 'base2/basePage.html' %}
+{% block content %}
+{% load static %}
+{% include 'base/base.html' %}
+{% load widget_tweaks %}
+
+
+<style>
+    .search{
+        display: none;
+    }
+    .videoPlay{
+      display: none;
+    }
+
+</style>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="table-responsive pt-3">
+        <table class="table table-striped project-orders-table">
+          <thead>
+            <tr>
+              <th class="ml-5">ID</th>
+              <th>Project name</th>
+              <th>Customer</th>
+              <th>Deadline</th>
+              <th>Payouts	</th>
+              <th>Traffic</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#D1</td>
+              <td>Consectetur adipisicing elit </td>
+              <td>Beulah Cummings</td>
+              <td>03 Jan 2019</td>
+              <td>$ 5235</td>
+              <td>1.3K</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                    Edit
+                    <i class="typcn typcn-edit btn-icon-append"></i>                          
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                    Delete
+                    <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>#D2</td>
+              <td>Correlation natural resources silo</td>
+              <td>Mitchel Dunford</td>
+              <td>09 Oct 2019</td>
+              <td>$ 3233</td>
+              <td>5.4K</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                    Edit
+                    <i class="typcn typcn-edit btn-icon-append"></i>                          
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                    Delete
+                    <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>#D3</td>
+              <td>social capital compassion social</td>
+              <td>Pei Canaday</td>
+              <td>18 Jun 2019</td>
+              <td>$ 4311</td>
+              <td>2.1K</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                    Edit
+                    <i class="typcn typcn-edit btn-icon-append"></i>                          
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                    Delete
+                    <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>#D4</td>
+              <td>empower communities thought</td>
+              <td>Gaynell Sharpton</td>
+              <td>23 Mar 2019</td>
+              <td>$ 7743</td>
+              <td>2.7K</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                    Edit
+                    <i class="typcn typcn-edit btn-icon-append"></i>                          
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                    Delete
+                    <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>#D5</td>
+              <td> Targeted effective; mobilize </td>
+              <td>Audrie Midyett</td>
+              <td>22 Aug 2019</td>
+              <td>$ 2455</td>
+              <td>1.2K</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                    Edit
+                    <i class="typcn typcn-edit btn-icon-append"></i>                          
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                    Delete
+                    <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+    
+     
+     
+      <!-- partial -->
+  
+    
+          <div class="row">
+          
+          
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Students Application <span class="card-title-right"><a href="">add student</a></span></h4>
+                  
+               
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                            <th>actions</th>
+                            <form action="{% url 'core_app:student_search' %}" method="GET" class="form-control">
+
+                    
+                              {% csrf_token %}
+                          <th><label for="id">Student Id</label> <br> <input type="text" name="applicationId" class="form-control"></th>
+                          
+                          <th>Student Email <br>  <input type="email" name="email" class="form-control"></th>
+                        
+                          <th>First name <br>  <input type="text" name="firstName" class="form-control"></th>
+                          
+                          <th>last name <br>  <input type="text" name="lastName" class="form-control"></th>
+                         
+                          <th> <input type="submit" class="btn btn-dark" value="search"></th>
+                            </form>
+                        </tr>
+                      </thead>
+                      
+               
+
+                      <tbody class="tbody" style="background:#697dac;">
+
+                        {% for stud in student %}
+                        <tr class="tr-res">
+                            <td><i class="fa fa-ellipsis-v" aria-hidden="true" onclick="openFunc()"></i></td>
+                          <td>
+                            <a href="">{{stud.applicationId}}</a>
+                          </td>
+                          <td>
+                            <a href="">{{stud.email}}</a>
+                          </td>
+                          <td>{{stud.firstName}}</td>
+                          <td>{{stud.lastName}}</td>
+                          <td>{{stud.nationality.name}}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+
+
+              
+                      <tbody class="tbody">
+                        {% for student in students %}
+                        <tr class="tr">
+                            <td><i class="fa fa-ellipsis-v" aria-hidden="true" onclick="openFunc()"></i></td>
+                          <td>
+                            <a href="">{{student.applicationId}}</a>
+                          </td>
+                          <td>
+                            <a href="">{{student.email}}</a>
+                          </td>
+                          <td>{{student.firstName}}</td>
+                          <td>{{student.lastName}}</td>
+                          <td>{{student.nationality.name}}</td>
+                        </tr>
+                        {% endfor %}
+                      
+                     
+                      </tbody>
+                    
+                    </table>
+
+                    <div class="form-popup" id="popup">
+                      <div>
+                        <i class="fa-sharp right fa-solid fa-rectangle-xmark" onclick="closeFunc()"></i>
+                      </div>
+                      <ul>
+                        <li><a href="">Search<i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        <li><a href="">edit profile<i class="fa-solid fa-user"></i></a></li>
+                        <li><a href="">applications<i class="fa-solid fa-people-roof"></i></a></li>
+                      </ul>
+                      </div>  
+                  </div>
+                </div>
+              </div>
+            </div>
+
+         
+
+
+          </div>
+        
+<script>
+  function openFunc() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function closeFunc() {
+  document.getElementById("popup").style.display = "none";
+}
+ /* let openup = document.getElementById('popup');
+  let openbox ="open"
+function openFunc(){
+  if(openbox === 'open'){
+     openup.style.display="block";
+    
+  }
+  else{
+    openbox = "close"
+    openup.style.display="none";
+  }
+
+}*/
+</script>
+
+        
+{% endblock %}

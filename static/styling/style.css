@@ -1,6 +1,352 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
 @import url('https://fonts.googleapis.com/css?family=Lobster');
-html {
+
+.container-scroller{
+  background-color: #ABA8A9 !important;
+}
+.content-wrapper {
+  /*background-color: #5bc0de;*/
+}
+.content-wrapper .row .col-md-3{
+  height: 120px;
+ 
+}
+a{
+  text-decoration: none;
+  text-transform: capitalize;
+}
+.content-wrapper .row .col-md-3 .card{
+  border-radius: 30px;
+ /* background-color: #999;
+ background: #c0a9bd;*/
+ /*background-color: #d05663;*/
+}
+.card .card-body {
+  padding: 0.5rem 2.5rem;
+}
+.card-body .course-icon i{
+  width: 100%;
+  font-size: 100px;
+
+}
+.card-body h6{
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+
+
+
+/*students.html*/
+
+.card-title{
+  font-size: 30px !important;
+  margin-bottom: 50px !important;
+ /* color: #fff !important;*/
+}
+.table-responsive{
+
+}
+tr th{
+  font-size: 20px !important;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 500 !important;
+  margin-bottom: 30px !important;
+  /*color: #fff;*/
+}
+thead{
+  margin-bottom: 30px !important;
+}
+.card-title-right a{
+  position: absolute;
+  right: 15px;
+  /*color: #697dac;*/
+ 
+  /*background: #697dac;
+  color: #fff;
+  border-radius: 10px;*/
+
+}
+
+.tr td, .tr td a{
+  
+  font-size: 18px !important;
+}
+.form-popup{
+  width: 200px;
+  position: absolute;
+  top: 160px;
+  left: 70px;
+  border: 2px solid;
+ background-color: #697dac;
+ border-radius: 20px;
+ display: none;
+
+}
+.form-popup ul li{
+  list-style: none;
+
+ 
+  
+}
+.form-popup ul li a {
+  color: #697dac !important;
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: 700;
+}
+.form-popup ul li, .form-popup ul li a:hover{
+  
+
+  color: #1a1a1a !important;
+  text-align: left !important;
+  width: auto;
+}
+.form-popup ul li a i{
+  
+  margin: 10px;
+  cursor: pointer !important;
+}
+.tr-res td, .tr-res td a{
+  color: #fff !important;
+  font-size: 18px !important;
+}
+.fa-ellipsis-v{
+  cursor: pointer;
+}
+.fa-sharp{
+  color: #fff;
+margin-left: 170px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+/* universityDetail page */
+.tour  .slide-container .prev,
+.tour .slide-container .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+ 
+}
+
+.tour .slide-container .prev:hover,
+.tour .slide-container .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.tour .slide-container .prev {
+  left: 2px;
+}
+
+.tour .slide-container .next {
+  right: 2px;
+}
+
+/*very important */
+.tour .dots-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.tour .dots-container .dot {
+  cursor: pointer;
+  margin: 5px;
+  width: 20px;
+  height: 20px;
+  color: #333;
+  border-radius: 50%;
+  background-color: #dfd6ce;
+}
+
+.tour .dots-container .dot.active {
+  border: 2px solid #000;
+}
+
+
+
+.tour p {
+ 
+  color: #3e4b5b; 
+  /*#f96868; #f96868;
+  color: hsl(213, 91%, 36%);;*/
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: .4s ease-in;
+  text-transform: capitalize;
+  margin-left: 100px;
+}
+
+.tour .slide-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+  max-height: 350px;
+}
+
+.tour .slide-container .slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.tour .slide-container .slide.mod {
+  animation: fade 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  width: 900px;
+  height: 350px;
+
+}
+
+.tour .slide-container .slide img {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  transition: all .3s ease-in-out;
+  border-radius: 7px;
+}
+ .tour .uniName{
+  text-align: center;
+ /* color: hsl(213, 91%, 36%);*/
+ color: #3e4b5b;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-top: 30px;
+  transition: .3s ease-in;
+
+ } 
+
+ /*university detail page*/
+ .about{
+  margin-top: 50px;
+  transition: all .5s ease-in;
+}
+.about .col-md-7 .card{
+  margin: 20px;
+}
+.about .col-md-7 .card p{
+  flex-wrap: wrap;
+  font-size: 22px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 300;
+  transition: .5s ease-in;
+}
+.about .row .col-md-5{
+  padding-right: 10px;
+  margin-top: 50px;
+}
+.about .row .col-md-5 .card{
+width: 490px;
+ 
+ 
+  
+}
+.imgBody{
+  width: 100%;
+  height: 500px;
+}
+.imgBody img{
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  margin-right: auto;
+  border-radius: 50%;
+}
+.about .row .col-md-7 .card h2{
+  font-size: 22px;
+  font-family: 'Times New Roman', Times, serif;
+  text-transform: capitalize;
+  color: #3e4b5b;
+
+
+}
+.about .row .col-md-7 .card h2 span{
+  
+   color: hsl(213, 91%, 36%);
+   font-weight: 700;
+
+}
+.container .details{
+  margin-top: 50px;
+}
+.container .details ul{
+  display: flex;
+  justify-content: center;
+
+}
+.container .details ul li{
+  list-style: none;
+  transition: .5s ease-in-out;
+  
+ 
+ 
+}
+.container .details ul li button{
+  border: none;
+  background-color: #3e4b5b;
+  color: white;
+  text-transform: capitalize;
+  font-family: 'Times New Roman', Times, serif;
+
+ 
+
+}
+.container .details ul li p{
+  font-size: 16px;
+  color: #000;
+  text-align: center;
+
+}
+.uniCourse tr th{
+text-align: left;
+transition: .3s ease-in;
+}
+.uniCourse tr td{
+text-align: left;
+transition: .5s ease-in;
+color: #3e4b5b;
+font-size: 16px;
+font-weight: 300;
+}
+.uniCourse tr:hover{
+
+transition: all .5s ease-in;
+border: 2px solid #3e4b5b;
+}
+.uniCourse tr td:hover{
+transition: all .3s ease-in;
+}
+#uniCourse{
+transition: 2s ease-in;
+}
+.detail-link{
+border-radius: 30%;
+}
+
+ /* end*/
+/* end detail page*/
+/*html {
   font-size: 62.5%;
 }
 body {
@@ -205,6 +551,9 @@ p {
 .content {
   padding: 120px 0;
 }
+.content-wrapper {
+  background-color: #5bc0de;
+}
 @media screen and (max-width: 768px) {
   .navbar-brand {
     margin-left: 20px;
@@ -318,4 +667,4 @@ p {
     -ms-transform: scaleY(1);
     transform: scaleY(1);
   }
-}
+}*/

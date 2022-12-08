@@ -1,0 +1,200 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}ImageSlides{% endblock %}
+{% block content %}
+
+
+
+
+
+
+
+<style>
+ 
+</style>
+
+
+
+    <section class="tour">
+        <h3 class="uniName">Take a tour of the university </h3>
+        <p style="text-align: center;"> {{university.name}}</p>
+        <div class="container">
+            <!--<h1>welcome to {{university.name}}</h1>-->
+            <div class="slide-container">
+              {% for pic in images %}
+              <div class="slide mod {% if forloop.counter0 == 0 %}active{% endif %}" id="slide{{ forloop.counter }}">
+                <img src="{{ pic.universityImages.url }}"   alt='not found'>
+              </div>
+              {% endfor %}
+              
+        
+              <a href="#" class="prev" title="Previous">&#10094</a>
+              <a href="#" class="next" title="Next">&#10095</a>
+            </div>
+            <div class="dots-container">
+                {% for pic in images %}
+              <span class="dot"></span>
+              {% endfor %}
+          
+            </div>
+         </div>
+    </section>
+
+    <div class="container">
+        <div class="details">
+            <ul>
+                <li><a href="#uniCourse" class="btn btn-danger">course</a></li>
+                <li><button>provider type</button>
+                <p>{{university.type_of_university}}</p>
+            </li>
+            <li><button>established</button>
+            <p>{{university.year_established}}</p></li>
+                <li><button>Institution type</button>
+                <p>{{university.type_of_institution}}</p></li>
+                <li><button>no of students</button>
+                <p>{{university.number_of_students}}</p></li>
+               
+            </ul>
+        </div>
+    </div>
+ 
+ <div class="container about">
+
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card">
+                <h2>about <span>{{university.name}}</span></h2>
+                <p>{{university.about}}</p>
+               <p>{{university.overview}}</p>
+               <p>{{university.description}}</p>
+            
+            </div>
+        </div>
+        <div class="col-md-5">
+            
+          <div class="card">
+            <div class="imgBody">
+                <img src="{{university.img.url}}" alt="">
+               </div>
+          </div>
+        </div>
+    </div>
+ </div>
+  
+
+
+
+
+
+
+<div class="row uniCourse" id="uniCourse">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="table-responsive pt-3">
+        <table class="table table-striped project-orders-table">
+          <thead>
+            <tr>
+              <th class="ml-5">S/N</th>
+              <th>courses</th>
+              <th>campus location</th>
+              <th>course id</th>
+              <!--<th>Payouts	</th>
+              <th>Traffic</th>
+              <th>Actions</th>-->
+            </tr>
+          </thead>
+          <tbody>
+            <h3>{{university.name}} -> <span>{{no_of_courses}} courses available</span></h3>
+            {% for course in univeristy_courses %}
+            <tr>
+              <td>{{forloop.counter }}</td>
+              <td>{{course.courseName}} </td>
+              <td>{{course.center }}</td>
+              <td>{{course.courseId}}</td>
+              <!--<td>$ 5235</td>
+              <td>1.3K</td>-->
+              <td>
+                <div class="d-flex align-items-center">
+                  <!--<button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                    Edit
+                    <i class="typcn typcn-edit btn-icon-append"></i>                          
+                  </button>-->
+                
+                  <a href="{% url 'core_app:courseDetail' course.pk %}" class="btn btn-danger btn-sm btn-icon-text detail-link"> view details</a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+  
+  
+  <script>
+    //sliders
+      let currentSlide = 0;
+  const slides = document.querySelectorAll(".slide")
+  const dots = document.querySelectorAll('.dot')
+  
+  const init = (n) => {
+    slides.forEach((slide, index) => {
+      slide.style.display = "none"
+      dots.forEach((dot, index) => {
+        dot.classList.remove("active")
+      })
+    })
+    slides[n].style.display = "block"
+    dots[n].classList.add("active")
+  }
+  document.addEventListener("DOMContentLoaded", init(currentSlide))
+  const next = () => {
+    currentSlide >= slides.length - 1 ? currentSlide = 0 : currentSlide++
+    init(currentSlide)
+  }
+  
+  const prev = () => {
+    currentSlide <= 0 ? currentSlide = slides.length - 1 : currentSlide--
+    init(currentSlide)
+  }
+  
+  document.querySelector(".next").addEventListener('click', next)
+  
+  document.querySelector(".prev").addEventListener('click', prev)
+  
+  
+  setInterval(() => {
+    next()
+  }, 3000);
+  
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      console.log(currentSlide)
+      init(i)
+      currentSlide = i
+    })
+  })
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
+
