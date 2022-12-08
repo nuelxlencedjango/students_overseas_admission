@@ -68,8 +68,8 @@ INSTALLED_APPS = [
     'django_filters',
      'widget_tweaks',
      'mathfilters',
-     'django_celery_results',
-     'django_celery_beat',
+     #'django_celery_results',
+    # 'django_celery_beat',
       'fontawesomefree'
 ]
 
@@ -176,10 +176,11 @@ MEDIA_ROOT =os.path.join(BASE_DIR ,'media/')
 
 
 cloudinary.config( 
-  cloud_name = "dihjcmvi3", 
-  api_key = 719413493487441, 
-  api_secret = "OdUEmhlZnR8xNsGrvTwh7RkPVL4" 
+  cloud_name=os.environ.get('CLOUD_NAME'),
+  api_key=os.environ.get('API_KEY'), 
+  api_secret=os.environ.get('API_SECRET'), 
 )
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

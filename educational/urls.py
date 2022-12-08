@@ -26,10 +26,9 @@ urlpatterns = [
     path('account/',include('account.urls')),
     path('',include('core_app.urls')),
     path('partners/',include('partners.urls')),
-    # path('core_app/',include('core_app.urls')),
-    #   path('core_app/',include('core_app.urls')),
+  
    
 ]
 
-urlpatterns += static(settings.MEDIA_URL ,document_root =settings.MEDIA_ROOT)
+urlpatterns = urlpatterns + static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)
 
