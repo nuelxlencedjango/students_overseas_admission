@@ -42,7 +42,7 @@ SECRET_KEY=os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1','web-production-cbed.up.railway.app']
+ALLOWED_HOSTS = ['127.0.0.1','web-production-5ca1.up.railway.app']
 
 
 # Application definition
@@ -194,7 +194,7 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 
 
-CSRF_TRUSTED_ORIGINS=['https://*.127.0.0.1','https://web-production-cbed.up.railway.app']
+CSRF_TRUSTED_ORIGINS=['https://web-production-5ca1.up.railway.app']
 
 
 #django_heroku.settings(locals())
