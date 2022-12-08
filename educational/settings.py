@@ -189,7 +189,7 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 
 
-#CSRF_TRUSTED_ORIGINS=['https://*.127.0.0.1','https://web-production-cbed.up.railway.app']
+CSRF_TRUSTED_ORIGINS=['https://*.127.0.0.1','https://web-production-cbed.up.railway.app']
 
 
 #django_heroku.settings(locals())
