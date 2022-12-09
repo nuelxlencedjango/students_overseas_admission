@@ -13,11 +13,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 
 
-
+import os
 
 from pathlib import Path
 
-import os
+import django_heroku
 
 import dj_database_url
 
@@ -38,7 +38,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY=os.environ.get('SECRET_KEY')
-#SECRET_KEY="django-insecure-^l)m&0ryr*fgyyy#zoxmsx^#03odx)55-sxpy&^%#_5ldqs9@s"
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
@@ -68,8 +68,8 @@ INSTALLED_APPS = [
     'django_filters',
      'widget_tweaks',
      'mathfilters',
-     #'django_celery_results',
-    # 'django_celery_beat',
+     'django_celery_results',
+     'django_celery_beat',
       'fontawesomefree'
 ]
 
