@@ -1,0 +1,311 @@
+
+
+.coursesInfo{
+ margin-top: 50px;
+}
+
+ .coursesInfo .col-md-3{
+  
+   border: 4px solid white;
+   
+  /* box-sizing: content-box;*/
+ }
+ .coursesInfo .col-md-3 .card{
+   height: 900px;
+ }
+
+
+
+.card {
+border-radius: 0.5rem;
+box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+padding-bottom: 1rem;
+
+
+}
+
+
+/* Additional demo display styles */
+* {
+box-sizing: border-box;
+}
+
+
+.card h3 {
+margin-top: 1rem;
+font-size: 1.25rem;
+}
+
+.card a {
+color: inherit;
+}
+
+
+.sch-info .card{
+height: 200px;
+display: flex;
+transition: .3s ease all ;
+
+}
+.schoolImg{
+width: 150px;
+height: 150px;
+margin: 20px;
+}
+.schoolImg img{
+width: 100%;
+height: 100%;
+border-radius: 50%;
+}
+.sch-info .content h3{
+text-align: center;
+font-size: 30px;
+font-weight: 700;
+color: hsl(213, 91%, 36%);
+margin-top: 20px;
+transition: .5s ease-in-out;
+}
+.sch-info .content h5{
+text-align: center;
+margin-top: 20px;
+}
+.overview{
+margin-top: 50px;
+}
+.overview ul{
+display: flex;
+margin-top: 10px;
+}
+.overview ul li{
+list-style: none;
+padding: 0;
+transition: .3s ease-in;
+
+}
+.overview ul li:hover{
+
+
+}
+.overview ul li button{
+text-transform: capitalize;
+font-size: 17px;
+border: none;
+font-weight: 300;
+}
+.overview ul li button:hover{
+background: #3e4b5b;;
+color: white;
+}
+.ov{
+margin-top: 30px;
+}
+
+.textContent h4{
+text-transform: capitalize;
+
+font-size: 18px;
+color: #3e4b5b;
+margin-top: 20px;
+
+}
+.textContent p{
+
+font-size: 16px;
+color: hsl(213, 91%, 36%);
+font-family: 'Times New Roman', Times, serif;
+font-weight: 700;
+transition: 3s all ease-in-out;
+
+}
+.textContent p:hover{
+transition: .3s all ease-in-out;
+color: black;
+}
+
+.ov ul li{
+list-style: none;
+}
+.ov ul li {
+text-align: left;
+}
+#requirement{
+display: none;
+transition: .3s ease-in;
+}
+
+
+
+.intake .table-responsive table tr{
+ transition: .5s all ease;
+ text-transform: capitalize;
+
+}
+.intake .table-responsive table tr th{
+ font-size: 16px !important;
+ transition: .5s all;
+ text-align: center !important;
+ font-weight: 700;
+ color: hsl(213, 91%, 36%);
+ text-transform: uppercase;
+ 
+}
+.intake thead tr{
+ transition: .3s all ease-in;
+ border-bottom: 2px solid gray;
+}
+
+.intake .table-responsive table tr td{
+ text-align: center;
+ font-size: 16px;
+ transition: .3s ease-in-out;
+}
+#intake{
+ display: none;
+}
+.scholarship{
+ height: 1000px;
+ display: none;
+}
+#guide{
+ background-image: url('/static/images/scholarhips/scholarship1.jpg');
+ width: 100%;
+ height: 250px;
+ background-color: #cccccc;
+
+background-position: center; /* Center the image */
+ background-repeat: no-repeat; /* Do not repeat the image */
+ background-size: cover;
+ padding: 10px;
+
+
+}
+
+#guide .contents{
+ position: relative;
+ z-index: 1;
+}
+.scholar-content .contents h3{
+ margin-top: 100px;
+ /*color: hsl(213, 91%, 36%);*/
+ text-align: center;
+ text-transform: capitalize;
+ transition: .3s ease-in;
+ color: white;
+ font-size: 32px;
+ font-weight: 700;
+ font-family: 'Times New Roman', Times, serif;
+
+}
+.scholar-content .contents h3:hover{
+ transition: all .5s ease-in-out;
+
+}
+.scholar-content .contents ul{
+ margin-top: 100px;
+}
+.contents .sch-detail{
+ color: hsl(213, 91%, 36%);
+ font-size: 22px;
+ font-weight: 500;
+ margin-top: 150px;
+ text-align: center;
+
+}
+.scholar-content .contents ul li{
+ font-size: 18px
+}
+.scholar-content .contents ul p{
+ font-size: 16px;
+ font-family: Arial, Helvetica, sans-serif;
+ margin: 20px;
+ flex-wrap: wrap;
+ transition: all .5s step-end;
+}
+.scholarshipImg img{
+ width: 100%;
+ height: 300px;
+ object-fit: cover;
+ border-radius: 10px;
+}
+.scholarshipImg p{
+ font-size: 16px;
+ font-family: Arial, Helvetica, sans-serif;
+ margin: 20px;
+ flex-wrap: wrap;
+ transition: all .5s step-end;
+}
+.about_course{
+ display: none;
+}
+.courseDet h3{
+ color: hsl(213, 91%, 36%);
+ font-size: 22px;
+ font-weight: 500;
+ margin-top: 30px;
+ text-align: center;
+}
+.courseText p{
+ font-size: 16px;
+ font-family: sans-serif;
+ margin: 20px;
+ flex-wrap: wrap;
+ transition: all .5s step-end;
+}
+.locate{
+ border: 4px solid white;
+ display: none;
+}
+.locate h1{
+ color: hsl(213, 91%, 36%);
+ font-size: 22px;
+ font-weight: 500;
+ margin-top: 30px;
+ text-align: center;
+ text-transform: uppercase;
+}
+.locate h3{
+margin: 20px;
+font-size: 22px;
+font-family: 'Times New Roman', Times, serif;
+text-transform: capitalize;
+font-weight: 700;
+transition: all .4s ease-out;
+}
+.locate h3 span{
+color: #000;
+font-family: Verdana, Tahoma, sans-serif;
+font-weight: 200;
+font-size: 18px;
+}
+.accommodation{
+display: none;
+}
+.accommodation .col-sm-6 .bodyImg img{
+width: 400px; 
+height: 300px;
+margin: 10px;
+border-radius: 10px;
+box-shadow: 1px 1px 1px blanchedalmond;
+
+}
+.accommodation h1{
+color: hsl(213, 91%, 36%);
+ font-size: 22px;
+ font-weight: 500;
+ margin-top: 20px;
+ text-align: center;
+ text-transform: uppercase;
+}
+.accommodation .col-sm-6 p{
+font-size: 16px;
+font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+flex-wrap: wrap;
+}
+.requirement .container h3{
+color: hsl(213, 91%, 36%);
+ font-size: 22px;
+ font-weight: 500;
+ margin-top: 50px;
+ text-align: center;
+ text-transform: uppercase;
+}
