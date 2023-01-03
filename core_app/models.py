@@ -9,7 +9,6 @@ import datetime
 
 
 
-
 class Courses(models.Model):
     courseName =  models.CharField(max_length=200, null=True)
     duration =  models.CharField(max_length=200, null=True)
