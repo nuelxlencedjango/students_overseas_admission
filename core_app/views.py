@@ -30,6 +30,9 @@ def homePage(request):
     return render(request, 'base/base.html')
 
 
+
+
+# course search 
 def search(request):
     title ="Search"
     query = request.GET.get('search')
