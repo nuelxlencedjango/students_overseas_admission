@@ -23,9 +23,10 @@ class Courses(models.Model):
     date_added =models.DateField(null=True,blank=True)
     courseId = models.CharField(max_length=200, null=True,blank=True)
     commission = models.DecimalField(max_digits=10,decimal_places=00,blank=True,null=True)
-    about =models.TextField(max_length=500, null=True,blank=True)
-    overview =models.TextField(max_length=500, null=True,blank=True)
-    detail =models.TextField(max_length=500, null=True,blank=True)
+    why1 =models.CharField(max_length=900, null=True, blank=True)
+    about =models.TextField(max_length=900, null=True,blank=True)
+    overview =models.TextField(max_length=900, null=True,blank=True)
+    detail =models.TextField(max_length=900, null=True,blank=True)
 
    
 
@@ -52,10 +53,10 @@ class Universities(models.Model):
   img = CloudinaryField(blank=True,null=True)
   city = models.CharField(max_length=200, null=True)
   courses =  models.ManyToManyField(Courses, null=True,blank=True,  related_name="university_courses")
-  about =models.TextField(max_length=400, null=True,blank=True)
-  overview =models.TextField(max_length=400, null=True,blank=True)
-  description =models.TextField(max_length=400, null=True, blank=True)
-  why1 =models.CharField(max_length=400, null=True, blank=True)
+  about =models.TextField(max_length=900, null=True,blank=True)
+  overview =models.TextField(max_length=900, null=True,blank=True)
+  description =models.TextField(max_length=900, null=True, blank=True)
+  why1 =models.CharField(max_length=900, null=True, blank=True)
   type_of_university =models.CharField(max_length=20, null=True, blank=True)
   year_established =models.CharField(max_length=10, null=True, blank=True)
   type_of_institution =models.CharField(max_length=400, null=True, blank=True)
