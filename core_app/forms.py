@@ -98,9 +98,7 @@ class ApplicationForm(forms.ModelForm):
         super(ApplicationForm, self).__init__(*args,**kwargs)
 
         self.fields['nationality'].empty_label = "Select country"
-        #self.fields['nationality'].widget.attrs['class'] = 'main'
-        #self.fields['nationality'].queryset = StudentApplication.objects.all().values_list('id', 'nationality')
-
+       
 
 
 class StudentPassportForm(forms.ModelForm):

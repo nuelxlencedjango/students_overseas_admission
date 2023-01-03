@@ -51,7 +51,7 @@ class Universities(models.Model):
   name =  models.CharField(max_length=200, null=True)
   img = CloudinaryField(blank=True,null=True)
   city = models.CharField(max_length=200, null=True)
-  courses =  models.ManyToManyField(Courses, null=True, related_name="university_courses")
+  courses =  models.ManyToManyField(Courses, null=True,blank=True,  related_name="university_courses")
   about =models.TextField(max_length=400, null=True,blank=True)
   overview =models.TextField(max_length=400, null=True,blank=True)
   description =models.TextField(max_length=400, null=True, blank=True)
@@ -138,7 +138,7 @@ class UniversityAccommodation(models.Model):
 
 
 class CourseRequirements(models.Model):
-    course = models.ForeignKey(Courses,on_delete=models.SET_NULL, null=True,related_name="university_requiremeents")
+    course = models.ForeignKey(Courses,on_delete=models.SET_NULL, null=True, blank=True, related_name="university_requiremeents")
     university = models.ForeignKey(Universities,on_delete=models.SET_NULL, null=True,related_name="schools")
     requirement =  models.CharField(max_length=200, null=True)
 

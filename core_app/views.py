@@ -13,13 +13,15 @@ from django.urls import reverse
 from django.db.models import Q 
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
+from bs4 import BeautifulSoup
+import requests
+
 from django.views.generic import (
     ListView 
 )
 from account.models import *
 
 from .forms import *
-
 
 
 
