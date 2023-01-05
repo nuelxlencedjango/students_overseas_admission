@@ -100,6 +100,7 @@
               <span class="nav-link">
                 <div class="border-bottom">
                   <h6 class="font-weight-normal mb-3">Projects</h6>
+
                 </div>
                 <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Add a project</button>
              
@@ -123,12 +124,44 @@
                   </form>
               </div>
 
+              <!--<div class="container courses">
+                <div class="row">
+                  {% for result in course_item %} 
+                  {% for d in result.university_courses.all %}
+                  <div class="col-md-4">
+                    
+                    <div class="product-card">
+                     
+                    <a href="">
+                      <div class="card-body">
+                        <h3>{{result.courseName}}</h3>
+                        <h6>({{result.courseType}})</h6>
 
-   {% for result in course_item %} 
+                        <div class="card-img">
+                          <img src="{{ d.img.url }}" alt="">
+                        
+                          <h2>{{d.name }},<span>{{d.country.name}}</span></h2>
+                        </div>
+                        {% endfor %}
+                        <div class="card-text">
+                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                            Corporis magni quae eveniet ratione at, quibusdam beatae
+                             voluptatem mollitia blanditiis. 
+                            Non corporis, rerum totam id obcaecati hic ut enim itaque similique.</p>
+                        </div>
+                      </div>
+                    </a>
+                    </div>
+                     </div>
+                     {% endfor %}
+                </div>
+               </div>-->
+
+ 
    
-   <div class="flex-container">
+   <!--<div class="flex-container">
      <div>
-   {% for d in result.university_courses.all %}
+
        <div class="property-flex">
           
            <a href="{% url 'core_app:all_unis' %}">
@@ -138,15 +171,15 @@
            </a>
        </div>
       
-     </div>
-     <div>
+     </div>-->
+     <!--<div>
          <div class="course-information">
             <a href="{% url 'core_app:all_unis' %}">
                <div class="course-address">
                    <h2>{{d.name }},<span>{{d.country.name}}</span></h2>
                </div>
             </a>
-            {% endfor %}
+           
             
              <div class="course-information">   
                 <h3 class="btn btn-danger">{{result.courseName}}</h3>
@@ -158,30 +191,68 @@
                  <h3>Intake:{{result.courseIntake }}</h3>
              </div>
          </div>
-     </div>
+     </div>-->
 
    
-     <div class="course-require">
+     <!--<div class="course-require">
         <h4>requirements</h4>
 
         {% for req in result.university_requiremeents.all %}
          <h3 class="right">{{ req.requirement }}</h3>
          {% endfor %} 
-     </div> 
+     </div>--> 
      
      <!--<div class="course-information">
        <h3 class="center">{{ result.release_date }}</h3>
-   </div>-->  
    </div>
+   </div>-->
 
 
-   <div class="contar">
+   <!--<div class="contar">
    <div class="btn-groupy " role="group" aria-label="Basic mixed styles example">
-       <a href="{% url 'core_app:addmission_process' result.id %}" type="button" class="btn btnb btn-dark">Apply Now</a>
-     </div>
-   </div>
-   {% endfor %}
 
+     </div>
+   </div>-->
+  
+
+
+   </div>
+  
+
+   <div class="container">
+    <div class="row">
+     
+      {% for result in course_item %} 
+      {% for d in result.university_courses.all %}
+      <div class="col-md-4">
+        
+        <div class="product-card">
+         
+        <a href="{% url 'core_app:courseDetail' result.pk %}">
+          <div class="card-body">
+            <h3>{{result.courseName}}</h3>
+            <h6>({{result.courseType}})</h6>
+            <div class="card-img">
+              <img src="{{ d.img.url }}" alt="">
+            
+              <h2>{{d.name }},<span>{{d.country.name}}</span></h2>
+            </div>
+            {% endfor %}
+            <!--<div class="card-text">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                Corporis magni quae eveniet ratione at, quibusdam beatae
+                 voluptatem mollitia blanditiis. 
+                Non corporis, rerum totam id obcaecati hic ut enim itaque similique.</p>
+            </div>-->
+          </div>
+        </a>
+        </div>
+         </div>
+         {% endfor %}
+        
+     
+    </div>
+   </div>
 
    
    <div class="center">
@@ -208,16 +279,146 @@
     </ul>
   {% endif %}  
     </div>
-   </div>
           </div>
         </div>
 
 
 
+
+
+
+
+<style>
+  .ontent-wrapper{
+    background-color: #ccc;
+  }
+
+.courses{
+            margin-top: 30px;
+          }
+           .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 30px;
+          }
+        
+         .card-img  img{
+          width: 100%;
+          height: 130px;
+         }
+        
+
+          .product-card  h3 {
+            font-size: 20px;
+            margin: 2px 0;
+          
+          }
+          .product-card a .card-body h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            text-align: left;
+
+            color: #606a84;
+          }
+          .product-card button:hover {
+            background-color: #555;
+          }
+
+          .product-card {
    
-  
+         transition: all 0.5s ease-in-out;
+  }
+  .product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+a{
+ text-decoration: none;
+}
+.course-card a .card-body h2 {
+            font-size: 18px;
+            margin: 10px 0;
+            text-align: left;
+            color: #606a84;
+          }   
+        
+ a .card-body .card-img h2 {
+            font-size: 18px;
+            margin: 1px 0;
+            text-align: left;
+            color: #606a84;
+           
+           
+          }
+a .card-body .card-img h2 span {
+            
+            color: #0076AD;
+            color: hsl(213, 91%, 36%);
+           
+          }
+h6{
+  color: #0076AD;
+  color: hsl(213, 91%, 36%);
+}
+          /*.product-card  p {
+            color: #777;
+            font-size: 0.9em;
+            margin: 5px 0;
+          }
+        
+          /*.product-card button {
+            background-color: #333;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.9em;
+            padding: 10px;
+            width: 80%;
+          }*/
+          /*a .card-text p {
+            color: #777;
+            font-size: 0.9em;
+            margin: 5px 0;
+            text-align: justify;
+          } */
+     
+  /*.course-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 30px;
+          }
+          a .card-img  img{
+          width: 100%;
+          height: 130px;
+         }  
+         .course-card a .card-body h3 {
+            font-size: 20px;
+            margin: 2x 0;
+            text-align: center;
+            color: #606a84;
+            color: #0076AD;
+          } */ 
+         
+        </style>
+        
+       
+ 
+        
+        
 
 
+        
     <!-- plugins:js -->
     <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
     <!-- endinject -->

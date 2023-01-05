@@ -61,7 +61,7 @@ def courseInformation(request):
 
     #pagination
     page =request.GET.get('page', 1)
-    paginator = Paginator(course_item, 10)
+    paginator = Paginator(course_item, 5)
     
     try:
         courseItems = paginator.page(page)
