@@ -1,0 +1,223 @@
+
+{% extends 'base2/basePage.html' %}
+{% block content %}
+{% load static %}
+
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+<style>
+    .search{
+        display: none;
+    }
+    fieldset p{
+      font-size: 16px;
+      font-family: 'Times New Roman', Times, serif;
+      
+    }
+</style>
+      
+            <div class="container">
+          <div class="content-wrapper">
+
+        <div class="alert alert-danger">
+            <strong>
+      
+          {{ formset.errors }}
+       
+        </strong>
+          </div>
+         
+
+        
+
+            <form action="{% url 'core_app:qualification_sub'  %}" method="POST" class="form-sample" id="form-container">
+                  
+                {% csrf_token %}
+                
+                
+                <div class="row">
+                    <h4 class="card-title">academic qualifications hhhhhhhhh</h4>
+
+                 
+                   
+                    {{workXP_formset.management_form}}
+                    {% for form in workXP_formset %}
+                    <div class="academic_details" id="academic_details">
+                    <div class="col-md-8">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Student Full Name</label>
+                        <div class="col-sm-9">
+                          <input type="" name="fullName" class="form-control" value="{{ student.fullName }}"   readonly/>
+                       
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-8">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Student Email </label>
+                        <div class="col-sm-9">
+                          <input type="" name="email" class="form-control" value="{{ student.email }}" readonly />
+                         
+                        </div>
+                      </div>
+                    </div>
+                 
+
+                    
+                   
+
+                    <div class="col-md-8">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">institution attended</label>
+                          <div class="col-sm-9">
+                            <!--<input type="text" name="sch_attended" class="form-control" placeholder="institution Name"/>-->
+                            {% render_field form.sch_attended|attr:'required:true' class="form-control" %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">state</label>
+                          <div class="col-sm-9">
+                            <!--<input type="text" name="state" class="form-control" placeholder="Location"/>-->
+                            {% render_field form.state|attr:'required:true' class="form-control" %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">country</label>
+                          <div class="col-sm-9">
+                            <!--<input type="text" name="country" class="form-control" placeholder="Location"/>-->
+                            {% render_field form.country|attr:'required:true' class="form-control" %}
+                          </div>
+                        </div>
+                      
+                      </div>
+                     
+                      <div class="col-md-8">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Start Date *</label>
+                          <div class="col-sm-9">
+                            <!--input type="date" name="startDate" class="form-control"  />-->
+                            {% render_field form.startDate|attr:'required:true' class="form-control" %}
+                          </div>
+                        </div>
+                      </div>
+                    
+                     
+                      <div class="col-md-8">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">End Date</label>
+                          <div class="col-sm-9">
+                            <!--<input type="date" name="endDate" class="form-control" />-->
+                            {% render_field form.endDate|attr:'required:true' class="form-control" %}
+                            
+                            <!--{{ form.startDate|as_crispy_field }}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">certificate awarded</label>
+                          <div class="col-sm-9">
+                            <!--<input type="text" name="certificate" class="form-control" placeholder="Location"/>-->
+                            {% render_field form.certificate|attr:'required:true' class="form-control" %}
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+                    
+                    </div>
+                   
+                    {% endfor %}
+                    <button id="add-form" type="button" class="btn btn-primary">Add Another institution</button>
+                  
+               <div class="modal-footer">
+               
+                    <a href="{% url 'account:p_dashboard' %}" type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</a>
+                    <button type="submit" class="btn btn-danger">Save And Continue</button>
+                </div>
+            </form>
+            </div>
+            </div>
+             
+
+
+
+    
+
+
+<!-- students/academic.html -->
+<form method="post">
+  {% csrf_token %}
+  {{ workXP_formset.management_form }}
+  {% for form in workXP_formset %}
+    {{ form.as_p }}
+  {% endfor %}
+  <input type="submit" value="Submit">
+</form>
+
+
+
+<script>
+    let schoolForm = document.querySelectorAll(".academic_details") 
+    let container = document.querySelector("#form-container") 
+    let addButton = document.querySelector("#add-form")
+    let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+   
+  var academicDetails = document.querySelector("#academic_details").cloneNode(true);
+
+
+    let formNum = schoolForm.length - 1
+    addButton.addEventListener('click', addForm)
+
+    function addForm(e){
+        e.preventDefault();
+        let newForm = schoolForm[0].cloneNode(true);
+        let formRegex = RegExp(`form-(\\d){1}-`,'g');
+
+        formNum++;
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+        container.insertBefore(newForm, addButton);
+        //container.appendChild(newForm, addButton);
+
+        totalForms.setAttribute('value', `${formNum+1}`)
+        
+        let removeButton = document.createElement("button")
+        removeButton.innerHTML = "Remove"
+        removeButton.addEventListener('click', removeForm)
+        newForm.appendChild(removeButton)
+
+        let formNumberDisplay = document.createElement("p")
+        formNumberDisplay.innerHTML = "Form " + (formNum+1)
+        newForm.insertBefore(formNumberDisplay, newForm.firstChild)
+
+
+
+        
+    }
+
+
+    function removeForm(e){
+        e.preventDefault();
+        let formToRemove = e.target.parentElement
+        formToRemove.remove()
+        formNum--;
+        totalForms.setAttribute('value', `${formNum+1}`)
+    }
+   
+ 
+ 
+</script>
+
+
+
+
+
+
+   
+{% endblock %} 

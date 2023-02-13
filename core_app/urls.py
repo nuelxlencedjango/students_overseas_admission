@@ -13,19 +13,36 @@ urlpatterns =[
 
      path('courses/', views.courseInformation, name='courses'),
      path('all_unis/', views.allOurUniversities, name='all_unis'),
-     path('addmission_process/<int:id>/', views.submissionProcess, name='addmission_process'),
+    
+     path('admission_process/<int:id>/', views.submissionProcess, name='admission_process'),
 
     path('course_selected/', views.confirmCourse, name='course_selected'),
 
     path('student_detail/', views.studentInformation, name='student_detail'),
+         
+    path('passport/<str:email>/',views.passportInformation, name='passport'),  
+           
+     path('passportReg',views.passportRegistration, name='passportReg'),      
+
+     path('addr/<str:email>/',views.studentAddr, name='addr'),
+          
+    path('addrForm/',views.studentAddressRegister_view, name='addrForm'),
+         
+    path('emerge/<str:email>/',views.familyContact, name='emerge'),
+     path('emergContact',views.emergencyContact, name='emergContact'),     
+
+
+    path('work_xp/<str:email>/',views.workX, name='work_xp'),
+         
+    path('experience/',views.workExperience , name='experience'),    
+
+      path('academic_info/<str:email>/', AcademicCreate.as_view(), name="academic_info"),
+
+
 
     path('student_info/', views.studentApplicationDetails, name='student_info'),
-    path('passport/<str:name>/',views.passportRegistration, name='passport'),
-    path('addr/',views.studentAddr, name='addr'),
-   path('emerge/',views.familyContact, name='emerge'),
-   path('xp/',views.workX, name='xp'),
-
-
+ 
+   
     path('student/',views.studentTable, name='student'),
 
      

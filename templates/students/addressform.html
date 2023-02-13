@@ -2,7 +2,6 @@
 {% extends 'base2/basePage.html' %}
 {% block content %}
 {% load static %}
-{% include 'base/base.html' %}
 {% load widget_tweaks %}
 
 <style>
@@ -20,23 +19,39 @@
    
     
         <!-- partial -->
-
+        {% if form.errors %}
         <div class="alert alert-danger">
-            <strong>
-      
-          {{ form.errors }}
-       
-        </strong>
+            <strong>{{ form.errors }}</strong>
           </div>
-      
+          {% endif %}
+          {% if student %}
+         
             <div class="container">
-          <div class="content-wrapper">
+          <div class="content">
             
-            <form action="{% url 'core_app:student_info' %}" method="POST" class="form-sample">
+            <form action="{% url 'core_app:addrForm' %}" method="POST" class="form-sample">
                   
                 {% csrf_token %}
             <div class="row">
-                <h4 class="card-title">Address Details</h4>
+                <h3 class="card-title">Address Details</h3>
+                {% for name in student %}
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Full Name</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="fullName" class="form-control" value="{{name.fullName}}"   readonly/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Email </label>
+                    <div class="col-sm-9">
+                      <input type="text" name="email" class="form-control" value="{{ name.email }}" readonly />
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
                 <div class="col-md-6">
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Street *</label>
@@ -97,6 +112,7 @@
             </form>
        </div>
    </div>
+   {% endif %}
   
               
 

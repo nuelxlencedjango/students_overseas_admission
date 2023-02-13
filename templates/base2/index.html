@@ -14,16 +14,20 @@
   background-color: #ABA8A9 !important;
 }
 .content-wrapper{
-  background-color: #697dac ;/*#1a1a1a;*/
+  background-color: #0c255f ;/*#1a1a1a;*/
   /*background-color: #1A1A1A;*/
+  background-color: #1E90FF;
   
 }
 .name label{
   color: #FFF;
 }
-.card{
-  background-color: #8b2030; /*#d1e8ff; /*#d8dfee; #ABA8A9;*/
+.menu-title{
+  color: whitesmoke !important;;
 }
+/*.card{
+  background-color: #8b2030; /*#d1e8ff; /*#d8dfee; #ABA8A9;
+}*/
 .modal-body .card{
   background: whitesmoke;
 }
@@ -32,6 +36,22 @@
 }
 li span{
 
+}
+.content-wrapper {
+    /*background-color: #697dac;
+     background-color: #1A1A1A; */
+    background: white;
+}
+.content-wrapper .row .col-md-3 .card {
+    border-radius: 30px;
+    /* background-color: #d05663; */
+    background: hsl(213, 91%, 36%);
+}
+.name label {
+    color: #3e4b5b;
+}
+.sidebar{
+  background: #100e5d61;
 }
 </style>
 
@@ -310,7 +330,7 @@ li span{
         </div>
 
         <div class="row">
-          <div class="col-md-3 stretch-card grid-margin animate__animated animate__backInRight animation-delay-0s"
+          <div class="col-md-3 stretch-card grid-margin animate__animated animate__backInRight animation-delay-0s "
             style="animation-delay: 0s;">
             <a href="{% url 'core_app:uni_search' %}">
               <div class="card  card-img-holder text-white">

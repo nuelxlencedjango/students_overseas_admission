@@ -2,7 +2,7 @@
 {% extends 'base2/basePage.html' %}
 {% block content %}
 {% load static %}
-{% include 'base/base.html' %}
+
 {% load widget_tweaks %}
 
 
@@ -10,32 +10,61 @@
     .search{
         display: none;
     }
+    .font-weight-light{
+      margin-bottom: 50px;
+    }
 </style>
   
    
-    
-        <!-- partial -->
 
-        <div class="alert alert-danger">
-            <strong>
+ 
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content d-flex align-items-center auth px-0">
+     
+        <div class="col-lg-10 mx-auto">
+          <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+
+            <h3>Emergency Contact </h3>
+            <h6 class="font-weight-light">student's alternative contact.</h6>
+
+        
+           {% if student %}
+            {% if form.errors %}
+                 <div class="alert alert-danger">
+                    <strong>{{ form.errors }}</strong>
+                  </div>
+              {% endif %}
       
-          {{ form.errors }}
-       
-        </strong>
-          </div>
-      
-            <div class="container">
-          <div class="content-wrapper">
-            
-            <form action="{% url 'core_app:student_info' %}" method="POST" class="form-sample">
+            <form action="{% url 'core_app:emergContact' %}" method="POST" class="form-sample">
                   
                 {% csrf_token %}
                 
                 <div class="row">
-                    <h4 class="card-title">Emergency Contact</h4>
+                    
+                    {% for name in student %}
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">First Name</label>
+                        <label class="col-sm-3 col-form-label">Student Full Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="fullName" class="form-control" value="{{name.fullName}}"   readonly/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Student Email </label>
+                        <div class="col-sm-9">
+                          <input type="email" name="email" class="form-control" value="{{ name.email }}" readonly />
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Relatives First Name</label>
                         <div class="col-sm-9">
                           <input type="text" name="firstName" class="form-control" placeholder="First Name"/>
                         </div>
@@ -71,7 +100,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                          <input type="text" name="email" class="form-control" placeholder="Email" />
+                          <input type="text" name="relaticeEmail" class="form-control" placeholder="Email" />
                         </div>
                       </div>
                     </div>
@@ -83,6 +112,7 @@
             </div>
 
             </div>
+            {% endif %}
             
 
 {% endblock %}

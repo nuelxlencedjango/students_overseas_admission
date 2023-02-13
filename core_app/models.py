@@ -84,6 +84,9 @@ class CourseIntakeDate(models.Model):
   summerStart_term_date =models.DateField(null=True,blank=True)
   summerEndStart_date =models.DateField(null=True,blank=True)
 
+  WinterIntakeTime=models.CharField(max_length=150, null=True, blank=True)
+  summerIntakeTime=models.CharField(max_length=150, null=True, blank=True)
+
   def __str__(self):
       return f"{self.university.name} "
 
@@ -112,7 +115,7 @@ class UniversityImages(models.Model):
     class Meta:
         #db_table='accommodation' 
 
-        verbose_name_plural='UniversityImages'          
+        verbose_name_plural='University Images'          
 
 
 
@@ -131,7 +134,7 @@ class UniversityAccommodation(models.Model):
     class Meta:
         #db_table='accommodation' 
 
-        verbose_name_plural='UniversityAccommodation' 
+        verbose_name_plural='University Accommodation' 
 
 
 
@@ -146,7 +149,7 @@ class CourseRequirements(models.Model):
       return str(self.course)
 
     class Meta:
-      verbose_name_plural='CourseRequirements' 
+      verbose_name_plural='Course Requirements' 
 
 
 #user actions
@@ -164,13 +167,14 @@ class CourseSelection(models.Model):
   status = models.CharField(max_length=200, null=True,blank=True,default='course selected')
   selectionId = models.CharField(max_length=200, null=True,blank=True)
   applied = models.BooleanField(default=False,blank=True,null=True)
+  studentEmail = models.EmailField(max_length=200, null=False,blank=False)
 
   def __str__(self):
       return f"{self.agent_name} - {self.course_name}"
     
 
   class Meta:
-      verbose_name_plural='CourseSelection'
+      verbose_name_plural='Course Selection'
 
 
   def save(self, *args, **kwargs):
@@ -188,18 +192,50 @@ class StudentAddmission(models.Model):
   firstName =  models.CharField(max_length=200, null=True)
   middleName =  models.CharField(max_length=200, null=True,blank=True)
   lastName =  models.CharField(max_length=200, null=True)
-  phone = models.CharField(max_length=200, null=True)
-  email = models.EmailField(max_length=200, null=True)
-  dob =models.DateField(null=True,blank=True)
+  phone = models.CharField(max_length=200, null=False)
+  email = models.EmailField(max_length=200, null=False)
+  dob =models.DateField(null=False,blank=False)
   application_date =models.DateField(null=True,blank=True)
-  passport = CloudinaryField(blank=True,null=True)
-  nationality =CountryField(blank=True)
+  passport = CloudinaryField(blank=False,null=False)
+  nationality =CountryField(blank=False, null=False)
+  
 
   def __str__(self):
-      return str(self.firstName)
+      #return str(self.firstName)
+      return f"{self.agent_name} - {self.firstName} {self.lastName}"
 
   class Meta:
       verbose_name_plural='Student Addmission'
+
+
+
+
+
+class StudentPassort(models.Model):
+  
+  agent_name = models.ForeignKey(User,null=True, on_delete=models.CASCADE, related_name='passportDetail')
+  fullName =  models.CharField(max_length=200, null=False,blank=False)
+  #lastName =  models.CharField(max_length=200, null=False,blank=False)
+  email = models.EmailField(max_length=200, null=False,blank=False)
+
+  passport_num =  models.CharField(max_length=200, null=False,blank=False)
+  place_of_issue =  models.CharField(max_length=200, null=False,blank=False)
+  place_of_birth = models.CharField(max_length=200,null=False,blank=False)
+  date_issued =models.DateField(null=False,blank=False)
+  expiry_date = models.DateField(null=True,blank=True)
+  nationality =CountryField(null=False,blank=False)
+  visa_denial =  models.BooleanField(default=False)
+ 
+
+  def __str__(self):
+      return f"{self.agent_name} - {self.fullName} "
+      
+  class Meta:
+      verbose_name_plural='Student Passport'
+
+
+
+
 
 
 #class UndergraduateApplication(models.Model):
@@ -229,7 +265,7 @@ class StudentApplication(models.Model):
       super(StudentApplication, self).save(*args, **kwargs)
 
   def __str__(self):
-      return f"{self.agent_name.last_name} applied for {self.firstName}"
+      return f"{self.agent_name} applied for {self.firstName}"
 
   class Meta:
       verbose_name_plural='Student Application'
@@ -237,39 +273,24 @@ class StudentApplication(models.Model):
 
 
 
-class StudentPassort(models.Model):
-  agent_name = models.ForeignKey(User,null=True, on_delete=models.CASCADE, related_name='passportDetail')
-  passport_num =  models.CharField(max_length=200, null=True,blank=True)
-  place_of_issue =  models.CharField(max_length=200, null=True)
-  place_of_birth = models.CharField(max_length=200, null=True)
-  date_issued =models.DateField(null=True,blank=True)
-  expiry_date = models.DateField(null=True,blank=True)
-  nationality =CountryField(blank=True)
-  visa_denial =  models.BooleanField(default=False)
- 
-
-  def __str__(self):
-      return f"{self.agent_name.last_name}"
-
-  class Meta:
-      verbose_name_plural='Student Passport'
-
 
 
 
 class StudentAddress(models.Model):
   agent_name = models.ForeignKey(User,null=True, on_delete=models.CASCADE, related_name='address')
-  street =  models.CharField(max_length=200, null=True,blank=True)
-  street_two =  models.CharField(max_length=200, null=True,blank=True)
-  city =  models.CharField(max_length=200, null=True)
-  state = models.CharField(max_length=200, null=True)
+  fullName =  models.CharField(max_length=200, null=False,blank=False)
+  email = models.EmailField(max_length=200, null=False,blank=False)
+  street =  models.CharField(max_length=200, null=False,blank=False)
+  street_two =  models.CharField(max_length=200, null=False,blank=False)
+  city =  models.CharField(max_length=200, null=False,blank=False)
+  state = models.CharField(max_length=200, null=False,blank=False)
   postal_code =models.CharField(max_length=200, null=True)
-  nationality =CountryField(blank=True)
+  nationality =CountryField(null=False,blank=False)
  
 
 
   def __str__(self):
-      return f"{self.agent_name.last_name}"
+      return f"{self.agent_name} -  {self.fullName}"
 
   class Meta:
       verbose_name_plural='Student Address'
@@ -278,17 +299,19 @@ class StudentAddress(models.Model):
 
 
 class EmergencyContact(models.Model):
-  agent_name = models.ForeignKey(User,null=True, on_delete=models.CASCADE, related_name='contact')
+  agent_name = models.ForeignKey(User,null=True,blank=True, on_delete=models.CASCADE, related_name='contact')
+  fullName =  models.CharField(max_length=200, null=True,blank=True)
+  email = models.EmailField(max_length=200, null=True,blank=True)
   relationship =  models.CharField(max_length=200, null=True,blank=True)
   firstName =  models.CharField(max_length=200, null=True)
   lastName =  models.CharField(max_length=200, null=True)
   phone = models.CharField(max_length=200, null=True)
-  email = models.EmailField(max_length=200, null=True)
+  relaticeEmail = models.EmailField(max_length=200, null=True)
 
  
 
   def __str__(self):
-      return f"{self.agent_name.last_name}"
+      return f"{self.agent_name} -  {self.fullName}"
   class Meta:
       verbose_name_plural='Emergency Contact'
   
@@ -297,6 +320,8 @@ class EmergencyContact(models.Model):
 
 class WorkEXperience(models.Model):
   agent_name = models.ForeignKey(User,null=True, on_delete=models.CASCADE, related_name='work')
+  fullName =  models.CharField(max_length=200, null=True,blank=True)
+  email = models.EmailField(max_length=200, null=True,blank=True)
   worked_before =  models.BooleanField(default=False)
   membership =  models.CharField(max_length=200, null=True,blank=True)
   employer =  models.CharField(max_length=200, null=True,blank=True)
@@ -305,7 +330,7 @@ class WorkEXperience(models.Model):
   
   
   def __str__(self):
-      return f"{self.agent_name.first_name}"
+      return f"{self.agent_name} -  {self.fullName}"
 
   class Meta:
       verbose_name_plural='Work EXperience'
@@ -313,22 +338,50 @@ class WorkEXperience(models.Model):
 
 
 
-#class Pizza(models.Model):
+class SchoolQualification(models.Model):
+  agent_name = models.ForeignKey(User,null=True, on_delete=models.CASCADE, related_name='academicsQualifications')
+  fullName =  models.CharField(max_length=200, null=True,blank=True)
+  email = models.EmailField(max_length=200, null=True,blank=True)
+  sch_attended =  models.CharField(max_length=200, null=False,blank=False)
+  state =  models.CharField(max_length=200, null=False,blank=False)
+  country =CountryField(blank=True)
+  startDate =models.DateField(null=False,blank=False)
+  endDate = models.DateField(null=True,blank=True)
+  certificate =  models.CharField(max_length=200, null=False,blank=False)
+  
+  
+  def __str__(self):
+     
+      return f"{self.agent_name} -  {self.fullName}"
 
-   # name = models.CharField(max_length=30)
-   # toppings = models.ManyToManyField('Topping')
-
-    #def __str__(self):
-    #    return self.name
+  class Meta:
+      verbose_name_plural='Academic Qualification'      
 
 
-#class Topping(models.Model):
 
-   # name = models.CharField(max_length=30)
 
-   # def __str__(self):
-   #     return self.name      
-#
+class ResultImage(models.Model):
+    academics = models.ForeignKey(SchoolQualification, on_delete=models.CASCADE, null=True )
+    document = CloudinaryField('images',blank=True,null=True)
+    title =  models.CharField(max_length=200, null=False,blank=False, default="school information")
 
-#Pizza.objects.filter(toppings__name__startswith='p')
-#Topping.objects.filter(pizzas__name__contains='Hawaiian')
+    def __str__(self):
+      
+        return f"{self.academics.agent_name} - {self.academics.fullName} "
+    
+
+
+
+class AdditionalQualification(models.Model):
+    product = models.ForeignKey(SchoolQualification, on_delete=models.CASCADE )
+    sch_attended =  models.CharField(max_length=200, null=False,blank=False)
+    state =  models.CharField(max_length=200, null=False,blank=False)
+    country =CountryField(null=False,blank=True)
+    startDate =models.DateField(null=False,blank=False)
+    endDate = models.DateField(null=True,blank=True)
+    certificate_obtained =  models.CharField(max_length=200, null=False,blank=False)
+
+    def __str__(self):
+     
+        return f"{self.product.agent_name} -  {self.product.fullName}  "
+    

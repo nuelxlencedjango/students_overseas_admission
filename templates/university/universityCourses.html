@@ -115,7 +115,7 @@
         <li>
           <div class="textContent">
             <h4>course name</h4>
-          <p>{{selected.courseName}} <span> <a href="{% url 'core_app:addmission_process' selected.id %}" class="btn btn-dark">apply</a></span></p>
+          <p>{{selected.courseName}} <span> <a href="{% url 'core_app:admission_process' selected.id %}" class="btn btn-dark">apply</a></span></p>
          
           </div>
         </li>
@@ -200,6 +200,7 @@
                 {% for result in uni_course %}
                 {% for req in result.course_date.all %}
                 <tr>
+                 
                   <!--<td>{{forloop.counter }}</td>-->
                   <td>{{req.winter_ApplicationDate}} </td>
                   <td>{{req.winterApplicationDeadline }}</td>
@@ -210,7 +211,7 @@
                 </tr>
                 <tr>
                   <!--<td>{{forloop.counter }}</td>-->
-                  <td>{{req.summer_openApplicationDate}} </td>
+                  <td> {{req.summer_openApplicationDate}} </td>
                   <td>{{req.summerDeadlineApplicationDate }}</td>
                   <td>{{req.summerStart_term_date}}</td>
                   <td>{{req.summerEndStart_date}}</td>

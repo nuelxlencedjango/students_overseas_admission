@@ -12,7 +12,10 @@ from .models import *
 
 
 # Register your models here.
-#admin.site.register(Universities)
+admin.site.register(SchoolQualification)
+admin.site.register(AdditionalQualification)
+admin.site.register(ResultImage)
+
 admin.site.register(StudentAddmission)
 admin.site.register(CourseSelection)
 
@@ -20,6 +23,7 @@ admin.site.register(StudentApplication)
 admin.site.register(StudentAddress)
 admin.site.register(StudentPassort)
 admin.site.register(WorkEXperience)
+
 admin.site.register(EmergencyContact)
 admin.site.register(CourseIntakeDate)
 admin.site.register(Scholarship)

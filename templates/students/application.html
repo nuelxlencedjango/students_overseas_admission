@@ -16,6 +16,15 @@
 .sticky + .content {
   
 }
+.auth form .form-group .form-control {
+    background: #fff;
+    border-radius: 0;
+    font-size: .9375rem;
+    border: 1px solid #0c79e7;
+}
+.font-weight-light{
+  margin-bottom: 50px;
+}
 </style>
 
 
@@ -28,11 +37,11 @@
           <div class="col-lg-10 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               
-              <h4>Addmission Application Form</h4>
-              <h6 class="font-weight-light">Please fill up the form below.</h6>
+              <h3>Addmission Application Form</h3>
+              <h6 class="font-weight-light">Student Information Details.</h6>
               
-
-                <form action="{% url 'core_app:student_detail' %}" method="post" novalidate>
+                <!--student.studentEmail for form url-->
+                <form action="{% url 'core_app:student_detail' %}" method="post" enctype="multipart/form-data" novalidate>
                   {% csrf_token %}
                   
                   <div class="row w-100 mx-0">
@@ -74,7 +83,12 @@
                   {% endfor %}
                   </div>
 
-                  <button type="submit" class="btn btn-danger">Submit</button>
+                  <!--<button type="submit" class="btn btn-danger">Submit</button>-->
+
+                  <div class="modal-footer">
+                    <a href="{% url 'account:p_dashboard' %}" type="button" class="btn btn-dark">Cancel</a>
+                      <button type="submit" class="btn btn-danger">Save And Continue</button>
+                  </div>
                   
                 </form>
                 </div>
@@ -83,7 +97,7 @@
           </div>
         </div>
       </div>
-    </div>-->
+  
   
             
 
@@ -94,111 +108,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth px-0">
-       
-          <div class="col-lg-10 mx-auto">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-           
-              <h4>Addmission Application Form</h4>
-              <h6 class="font-weight-light">Please fill up the form below.</h6>
-              <form action="{% url 'core_app:addmission' %}" method="POST" class="pt-3">
-                {% csrf_token %}
-
-                <div class="row w-100 mx-0">
-
-      
-
-                <div class="mb-4 form-outline col-md-6">
-                  <label class="form-label">Student's First Name</label>
-                    {% render_field form.firstName|attr:'required:true' class="form-control" %}
-                </div>
-
-                <div class="mb-4 form-outline col-md-6">
-                    <label class="form-label">Middle Name</label>
-                    {% render_field form.middleName|attr:'required:false' class="form-control" %}
-                </div>
-                <div class="mb-4 form-outline col-md-6">
-                  <label class="form-label">Last Name</label>
-                  {% render_field form.lastName|attr:'required:true' class="form-control" %}
-                </div>
-                <div class="mb-4 form-outline col-md-6">
-                  <div class="form-label">University</div>
-                  <input type="text" class="form-control form-control-lg" name="University" id="exampleInputEmail1" placeholder="{{uni}}" >
-                   </div>
-                <div class="mb-4 form-outline col-md-6">
-                  <label class="form-label">Course</label>
-                  <input type="text" class="form-control form-control-lg" name="course" id="exampleInputEmail1" placeholder="{{course_info.courseName}}" >
-                  
-                </div>
-                
-                <div class="mb-4 form-outline col-md-6">
-                  <label class="form-label">Course Type</label>
-                  <input type="text" class="form-control form-control-lg" name="courseType" id="exampleInputEmail1" placeholder="{{course_info.courseType}}" >
-                  
-                </div>
-                <div class="mb-4 form-outline col-md-6">
-                  <label class="form-label">Course Intake</label>
-                  <input type="text" class="form-control form-control-lg" name="courseIntake" id="exampleInputEmail1" placeholder="{{course_info.courseIntake}}" >
-                  
-                </div>
-                <div class="mb-4 form-outline col-md-6">
-                  <div class="form-label">Passport</div>
-                    {% render_field form.passport|attr:'required:true' class="form-control" %}
-                    </div>
-                 <div class="mb-4 form-outline col-md-4">
-                <label class="form-label">Phone Number</label>
-                {% render_field form.phone|attr:'required:true' class="form-control" %}
-                </div>
-                <div class="mb-4 form-outline col-md-4">
-                  <label class="form-label">DOB</label>
-                  <input type="date" class="form-control form-control-lg" name="country" id="exampleInputEmail1" placeholder="Date of birth">
-               
-                 </div>
-                <div class="mb-4 form-outline col-md-4">
-                <label class="form-label">Email</label>
-                 {% render_field form.email|attr:'required:true' class="form-control" %}
-                </div>
-
-               
-                   <div class="mb-4 form-outline col-md-4">
-                   <label class="form-label">Country</label>
-                   <input type="text" class="form-control form-control-lg" name="country" id="exampleInputEmail1" placeholder="{{uni.country.name}}">
-                
-                  </div>
-                </div>
-                 
- 
-                  <button type="submit" class="btn btn-danger">Submit</button>
-               
-               
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>-->
   
-
- 
- 
-
-
-
-
 
 
 

@@ -2,7 +2,7 @@
 {% extends 'base2/basePage.html' %}
 {% block content %}
 {% load static %}
-{% include 'base/base.html' %}
+
 {% load widget_tweaks %}
 
 
@@ -10,11 +10,28 @@
     .search{
         display: none;
     }
+input::placeholder{
+
+font-size: 18px;
+color: hsl(213, 91%, 36%) !important;
+
+font-weight: 700;
+text-transform: capitalize;
+transition: 5s;
+font-family: 'Times New Roman', Times, serif;
+}
+fieldset p{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+    color:#555;
+  }
 </style>
   
    
     
         <!-- partial -->
+        {% if messages %}
         <div class="alert alert-danger">
             <strong>
               {% for mess in messages %}
@@ -22,22 +39,39 @@
                 {% endfor %}
               </strong>
           </div>
+          {% endif %}
 
+          {% if form2.errors %}
         <div class="alert alert-danger">
-            <strong>
-      
-          {{ form.errors }}
-       
-        </strong>
+            <strong>{{ form2.errors }}</strong>
           </div>
+          {% endif %}
       
             <div class="container">
-          <div class="content-wrapper">
-            <form action="{% url 'core_app:student_info' %}" method="POST" class="form-sample">
+          <div class="content">
+            <form action="{% url 'core_app:passportReg' %}" method="POST" class="form-sample" enctype="multipart/form-data">
                   
                 {% csrf_token %}
             <div class="row">
-                <h4 class="card-title">Passport Details</h4>
+                <h3 class="card-title">Passport Details</h3>
+                 {% for stud in student %}
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Student Name</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="fullName" value="{{stud.firstName}} {{stud.middleName}} {{stud.lastName}}" class="form-control" placeholder="{{stud.firstName}} {{stud.middleName}} {{stud.lastName}}"  readonly/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="email" value="{{stud.email}}" class="form-control" placeholder="{{stud.email}}"  readonly/>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
                 <div class="col-md-6">
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Passport Number</label>
@@ -46,6 +80,8 @@
                     </div>
                   </div>
                 </div>
+              
+             
 
                 <div class="col-md-6">
                   <div class="form-group row">
@@ -97,14 +133,13 @@
                       * 
                     <div>
                       &nbsp;
-                      <input type="radio" id="huey" name="visa_denial" value="Yes"
-                             checked>
+                      <input type="radio" id="huey"  name="visa_denial" value="Yes">
                       <label for="yes">Yes</label>
                     </div>
                 
                     <div>
                       &nbsp;
-                      <input type="radio" id="dewey" name="visa_denial" value="No">
+                      <input type="radio" id="dewey" name="visa_denial" value="No" checked>
                       <label for="no">No</label>
                     </div>
                   </p>
