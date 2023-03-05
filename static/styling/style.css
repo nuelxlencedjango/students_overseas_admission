@@ -366,6 +366,7 @@ h3 {
     border: 1px solid #0c79e7;
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 .form-label {
     margin-bottom: 0.5rem;
@@ -387,4 +388,9 @@ h3 {
 .alert, .alert-danger{
   color: hsl(213, 91%, 36%);
   text-align: center;
+}
+form{
+   
+  transition: all 0.5s ease-in-out;
+
 }

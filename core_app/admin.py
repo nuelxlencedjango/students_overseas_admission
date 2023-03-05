@@ -40,6 +40,9 @@ class CoursesAdmin(admin.ModelAdmin):
     class Meta:
        model = Courses
 
+
+       
+
 @admin.register(CourseRequirements)
 class CourseRequirementsAdmin(admin.ModelAdmin):
     pass
